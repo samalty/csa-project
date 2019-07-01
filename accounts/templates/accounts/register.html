@@ -1,18 +1,18 @@
 {% extends 'accounts/base.html' %}
 {% load crispy_forms_tags %}
-{% block page_title %}Log In{% endblock %}
+{% block page_title %}Register{% endblock %}
 {% block content %}
     <div class="container">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend>Log In</legend>
+                <legend>Register</legend>
                 {{ form|crispy }}
             </fieldset>
-            <button class="btn" type="submit">Log In</button>
+            <button class="btn" type="submit">Sign Up</button>
         </form>
         <div>
-            <p>Not a registered user? <a href="{% url 'register' %}">Create an account here.</a></p>
+            <p>Already have an account? <a href="{% url 'login' %}">Sign in here.</a></p>
         </div>
     </div>
 {% endblock %}
