@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+{% block page_title %}{{ review.subject }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>This is a review</h1>
+        <p>{{ review.subject }}</p>
+        <p>{{ review.feedback }}</p>
+        <p>{{ review.author }}</p>
+        <p>{{ review.date_posted }}</p>
+        <hr>
+        <p>Mentorship: {{ review.mentorship }}</p>
+        <p>Hiring: {{ review.hiring }}</p>
+        <p>Community: {{ review.community }}</p>
+        <p>Fundraising: {{ review.fundraising }}</p>
+        <p>Corporate Development: {{ review.corporate_dev }}</p>
+        <p>Overall: {{ review.overall }}</p>
+        <br>
+        {% if review.author == user %}
+            <a class="btn btn-secondary btn-sm" href="#">Update</a>
+            <a class="btn btn-danger btn-sm" href="#">Delete</a>
+        {% endif %}
+    </div>
+{% endblock %}

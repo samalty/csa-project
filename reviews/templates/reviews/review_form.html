@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% block page_title %}Leave A Review{% endblock %}
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend>Leave A Review</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <button class="btn" type="submit">Post Review</button>
+        </form>
+    </div>
+{% endblock %}

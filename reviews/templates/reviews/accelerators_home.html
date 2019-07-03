@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+{% block page_title %}Accelerators{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Accelerators Home</h1>
+        <h3>Subhead</h3>
+        {% for accelerator in accelerators %}
+            <img class="acc-logo" src="{{ accelerator.logo.url }}">
+            <p><a href="{% url 'accelerator_detail' accelerator.id %}">{{ accelerator.name }}</a></p>
+            <p>{{ accelerator.summary }}</p>
+            <p>{{ accelerator.overall_rating }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}

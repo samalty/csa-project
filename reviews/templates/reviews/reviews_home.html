@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+{% block page_title %}Reviews{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Reviews Home</h1>
+        <h3>Subhead</h3>
+        {% for review in reviews %}
+            <p><a href="{% url 'review_detail' review.id %}">{{ review.subject }}</a></p>
+            <p>{{ review.author }}</p>
+            <p>{{ review.date_posted }}</p>
+            <p>{{ review.overall }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}

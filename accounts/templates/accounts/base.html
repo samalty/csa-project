@@ -26,11 +26,19 @@
                 <a class="nav-item nav-link" href="#">Our Mission</a>
               </li>
               <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'accelerators' %}">Accelerators</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-item nav-link" href="{% url 'reviews' %}">Reviews</a>
               </li>
+              {% if user.is_superuser %}
+                <li class="nav-item">
+                  <a class="nav-item nav-link" href="{% url 'accelerator_create' %}">Add Accelerator</a>
+                </li>
+              {% endif %}
               {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-item nav-link" href="{% url 'add_review' %}">Add Review</a>
+                  <a class="nav-item nav-link" href="{% url 'review_create' %}">Add Review</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>

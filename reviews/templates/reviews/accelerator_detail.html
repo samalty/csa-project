@@ -1,0 +1,28 @@
+{% extends 'accounts/base.html' %}
+{% block page_title %}{{ accelerator.name }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <img class="acc-logo" src="{{ accelerator.logo.url }}">
+        <h2>{{ accelerator.name }}</h2>
+        <p>{{ accelerator.summary }}</p>
+        <p>{{ accelerator.overall_rating }}</p>
+        <br>
+        {% if accelerator.author == user %}
+            <a class="btn btn-secondary btn-sm" href="{% url 'accelerator_update' accelerator.id %}">Update</a>
+            <a class="btn btn-danger btn-sm" href="{% url 'accelerator_delete' accelerator.id %}">Delete</a>
+        {% endif %}
+        <br>
+        <hr>
+        <a class="btn btn-outline-secondary" href="{% url 'review_create' %}">Leave A Review</a>
+        <hr>
+        <h2>Reviews for {{ accelerator.name }}</h2>
+        <!--{% if accelerator.name == review.subject %}-->
+            {% for review in reviews %}
+                <p><a href="{% url 'review_detail' review.id %}">{{ review.subject }}</a></p>
+                <p>{{ review.author }}</p>
+                <p>{{ review.date_posted }}</p>
+                <p>{{ review.overall }}</p>
+            {% endfor %}
+        <!--{% endif %}-->
+    </div>
+{% endblock %}
