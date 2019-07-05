@@ -2,14 +2,35 @@
 {% block page_title %}Reviews{% endblock %}
 {% block content %}
     <div class="container">
-        <h1>Reviews Home</h1>
-        <h3>Subhead</h3>
         {% for review in reviews %}
-            <p><a href="{% url 'review_detail' review.id %}">{{ review.subject }}</a></p>
-            <p>{{ review.author }}</p>
-            <p>{{ review.date_posted }}</p>
-            <p>{{ review.overall }}</p>
-            <hr>
+            <div class="acc-reviews">
+                <h4><b><a href="{% url 'review_detail' review.id %}">Review Title</a></b></h4>
+                <p><a href="{% url 'review_detail' review.id %}">{{ review.subject }}</a></p>
+                <div class="emptyStarsSmall">
+                    <i class="fa fa-star" id="emptyStarSmall1"></i>                        
+                    <i class="fa fa-star" id="emptyStarSmall2"></i>
+                    <i class="fa fa-star" id="emptyStarSmall3"></i>
+                    <i class="fa fa-star" id="emptyStarSmall4"></i>
+                    <i class="fa fa-star" id="emptyStarSmall5"></i>
+                </div>
+                <div class="halfStarsSmall">
+                    <i class="fas fa-star-half" id="halfStarSmall1"></i>
+                    <i class="fas fa-star-half" id="halfStarSmall2"></i>
+                    <i class="fas fa-star-half" id="halfStarSmall3"></i>
+                    <i class="fas fa-star-half" id="halfStarSmall4"></i>
+                    <i class="fas fa-star-half" id="halfStarSmall5"></i>
+                </div>
+                <div class="fullStarsSmall">
+                    <i class="fa fa-star" id="fullStarSmall1"></i>                            
+                    <i class="fa fa-star" id="fullStarSmall2"></i>
+                    <i class="fa fa-star" id="fullStarSmall3"></i>
+                    <i class="fa fa-star" id="fullStarSmall4"></i>
+                    <i class="fa fa-star" id="fullStarSmall5"></i>
+                </div>
+                <br>
+                <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
+                <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.id %}">Read more</a></p>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

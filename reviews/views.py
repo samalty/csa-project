@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from .models import Accelerator, Review
+from .forms import ReviewForm, RawReviewForm
 
 def reviews(request):
     context = {
@@ -25,19 +26,21 @@ class AcceleratorListView(ListView):
 
 def accelerator_detail(request, pk):
     accelerator = get_object_or_404(Accelerator, pk=pk)
-    #reviews = Review.objects.all()
+    reviews = Review.objects.all()
+    print(accelerator)
+    print(len(reviews))
     context = {
-        #'accelerator': accelerator,
+        'accelerator': accelerator,
         'reviews': reviews,
-        #'reviews': Review.objects.filter(subject=accelerator.name).order_by('-date_posted')
     }
     return render(request, 'reviews/accelerator_detail.html', context)
 
+#'reviews': Review.objects.filter(subject=accelerator.name).order_by('-date_posted')
 # End test
 
 class AcceleratorCreateView(LoginRequiredMixin, CreateView):
     model = Accelerator
-    fields = ['name', 'summary', 'overall_rating'] # Need to remove overall_rating once a foreign key has been created
+    fields = ['name', 'website', 'locations', 'bio', 'sector_focus', 'stage', 'deal', 'duration', 'overall_rating', 'logo'] # Need to remove overall_rating once a foreign key has been created
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -45,7 +48,7 @@ class AcceleratorCreateView(LoginRequiredMixin, CreateView):
 
 class AcceleratorUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Accelerator
-    fields = ['name', 'summary', 'overall_rating'] # Need to remove overall_rating once a foreign key has been created
+    fields = ['name', 'website', 'locations', 'bio', 'sector_focus', 'stage', 'deal', 'duration', 'overall_rating', 'logo'] # Need to remove overall_rating once a foreign key has been created
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -85,6 +88,20 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+#def review_create(request):
+#    review_form = RawReviewForm()
+#    if request.method == 'POST':
+#        review_form = RawReviewForm(request.POST)
+#        if review_form.is_valid():
+            #eview_form.save()
+#            Review.objects.create(**review_form.cleaned_data)
+#            return redirect(reviews)
+#    context = {
+#        'form': review_form
+#    }
+#    return render(request, 'reviews/review_form.html', context)
+
 
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Review

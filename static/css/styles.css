@@ -2,22 +2,247 @@
 
 .background{
     width: 100%;
-    height: 1000px;
+    height: auto;
 }
 
 .container{
     box-sizing: border-box;
-    max-width: 1100px;
+    max-width: 1000px;
+    height: auto;
     padding: 40px;
     text-align: left;
 }
 
+/* <<<<<<<<<<<<<<<<<<<< Accelerators Home Page >>>>>>>>>>>>>>>>>>>> */
+
+.acc-container{
+    box-sizing: border-box;
+    padding: 15px;
+    width: 30%;
+    height: 190px;
+    margin: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5%;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px #cccccc;
+}
+
+.acc-container:hover{
+    background-color: #e6f2ff;
+    transition: 0.5s;
+}
+
+.emptyStarsHome,
+.fullStarsHome,
+.halfStarsHome{
+    position: absolute;
+    width: 190px;
+    margin-left: 27px;
+    text-align: center;
+    height: auto;
+    margin-top: 0px;
+}
+
+/* <<<<<<<<<<<<<<<<<<<< Company Detail Page >>>>>>>>>>>>>>>>>>>> */
+
+.acc-header{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.acc-header-inner-logo{
+    box-sizing: border-box;
+    width: 30%;
+    padding: 10px;
+    display: inline-block;
+}
+
+.acc-header-inner-lg{
+    box-sizing: border-box;
+    width: 45%;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.acc-header-inner-sm{
+    box-sizing: border-box;
+    width: 25%;
+    padding: 10px;
+    display: inline-block;
+    background-color: #e6f2ff;
+}
+
+.acc-bio{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e6e6e6;
+}
+
+.acc-details{
+    width: 100%;
+    margin-bottom: 20px;
+    height: auto;
+    padding: 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.acc-reviews{
+    width: 100%;
+    padding: 20px;
+    height: auto;
+    display: inline-block;
+    border-bottom: 1px solid #e6e6e6
+}
+
+/* <<<<<<<<<<<<<<<<<<<< Review Detail Page >>>>>>>>>>>>>>>>>>>> */
+
+.review-main{
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.review-ratings{
+    background-color: #e6e6e6;
+    padding-top: 20px;
+}
+
+.review-buttons{
+    padding: 20px;
+    text-align: center;
+}
+
+.stars-container{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 33%;
+    height: 100px;
+    text-align: center;
+}
+
+.emptyStarsReview,
+.fullStarsReview,
+.halfStarsReview{
+    position: absolute;
+    width: 190px;
+    margin-left: 56px;
+    text-align: center;
+    height: auto;
+}
+
+/* <<<<<<<<<<<<<<<<<<<< Text >>>>>>>>>>>>>>>>>>>> */
+
+h1,h2,h3,h4,h5,p{
+    color: #000000;
+}
+
+.date-author{
+    margin-top: 15px;
+    font-size: 14px;
+    color: #a6a6a6;
+}
+
 /* <<<<<<<<<<<<<<<<<<<< Images >>>>>>>>>>>>>>>>>>>> */
 
-.acc-logo{
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
+.acc-logo-list{
+    height: 60px;
+    width: auto;
+}
+
+.acc-logo-detail{
+    height: auto;
+    width: 100%;
+}
+
+/* <<<<<<<<<<<<<<<<<<<< Stars >>>>>>>>>>>>>>>>>>>> */
+
+.emptyStars,
+.fullStars,
+.halfStars{
+    position: absolute;
+    padding: 10px;
+    width: 390px;
+    text-align: center;
+    height: auto;
+}
+
+#emptyStar1,
+#emptyStar2,
+#emptyStar3,
+#emptyStar4,
+#emptyStar5{
+    color: #e6e6e6;
+    font-size: 45px;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+#halfStar1,
+#halfStar2,
+#halfStar3,
+#halfStar4,
+#halfStar5{
+    font-size: 45px;
+    color: #ffd11a;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+#fullStar1,
+#fullStar2,
+#fullStar3,
+#fullStar4,
+#fullStar5{
+    font-size: 45px;
+    color: #ffd11a;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+
+.emptyStarsSmall,
+.fullStarsSmall,
+.halfStarsSmall{
+    position: absolute;
+    width: 190px;
+    margin-top: 30px;
+    text-align: center;
+    height: auto;
+    margin-top: 0px;
+}
+
+#emptyStarSmall1,
+#emptyStarSmall2,
+#emptyStarSmall3,
+#emptyStarSmall4,
+#emptyStarSmall5{
+    color: #e6e6e6;
+    font-size: 30px;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+#halfStarSmall1,
+#halfStarSmall2,
+#halfStarSmall3,
+#halfStarSmall4,
+#halfStarSmall5{
+    font-size: 30px;
+    color: #ffd11a;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+#fullStarSmall1,
+#fullStarSmall2,
+#fullStarSmall3,
+#fullStarSmall4,
+#fullStarSmall5{
+    font-size: 30px;
+    color: #ffd11a;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+
+
+
+.disappear{
+    display: none;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Footer >>>>>>>>>>>>>>>>>>>> */
