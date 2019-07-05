@@ -13,17 +13,17 @@
             </div>
             <div class="halfStarsSmall">
                 <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                <i class="fas fa-star-half" id="halfStarSmall2"></i>
-                <i class="fas fa-star-half" id="halfStarSmall3"></i>
-                <i class="fas fa-star-half" id="halfStarSmall4"></i>
-                <i class="fas fa-star-half" id="halfStarSmall5"></i>
+                <i class="fas fa-star-half" {% if review.overall < 1.25 %} style="display:none;" {% endif %} id="halfStarSmall2"></i>
+                <i class="fas fa-star-half" {% if review.overall < 2.25 %} style="display:none;" {% endif %} id="halfStarSmall3"></i>
+                <i class="fas fa-star-half" {% if review.overall < 3.25 %} style="display:none;" {% endif %} id="halfStarSmall4"></i>
+                <i class="fas fa-star-half" {% if review.overall < 4.25 %} style="display:none;" {% endif %} id="halfStarSmall5"></i>
             </div>
             <div class="fullStarsSmall">
                 <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                <i class="fa fa-star" id="fullStarSmall2"></i>
-                <i class="fa fa-star" id="fullStarSmall3"></i>
-                <i class="fa fa-star" id="fullStarSmall4"></i>
-                <i class="fa fa-star" id="fullStarSmall5"></i>
+                <i class="fa fa-star" {% if review.overall < 1.75 %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                <i class="fa fa-star" {% if review.overall < 2.75 %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                <i class="fa fa-star" {% if review.overall < 3.75 %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                <i class="fa fa-star" {% if review.overall < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
             </div>
             <br>
             <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
@@ -41,19 +41,12 @@
                     <i class="fa fa-star" id="emptyStarSmall4"></i>
                     <i class="fa fa-star" id="emptyStarSmall5"></i>
                 </div>
-                <div class="halfStarsReview">
-                    <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall2"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall3"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall4"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall5"></i>
-                </div>
                 <div class="fullStarsReview">
                     <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                    <i class="fa fa-star" id="fullStarSmall2"></i>
-                    <i class="fa fa-star" id="fullStarSmall3"></i>
-                    <i class="fa fa-star" id="fullStarSmall4"></i>
-                    <i class="fa fa-star" id="fullStarSmall5"></i>
+                    <i class="fa fa-star" {% if review.mentorship != '5' and review.mentorship != '4' and review.mentorship != '3' and review.mentorship != '2' %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                    <i class="fa fa-star" {% if review.mentorship != '5' and review.mentorship != '4' and review.mentorship != '3' %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                    <i class="fa fa-star" {% if review.mentorship != '5' and review.mentorship != '4' %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                    <i class="fa fa-star" {% if review.mentorship != '5' %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                 </div>
             </div>
             <div class="stars-container">
@@ -65,19 +58,12 @@
                     <i class="fa fa-star" id="emptyStarSmall4"></i>
                     <i class="fa fa-star" id="emptyStarSmall5"></i>
                 </div>
-                <div class="halfStarsReview">
-                    <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall2"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall3"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall4"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall5"></i>
-                </div>
                 <div class="fullStarsReview">
                     <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                    <i class="fa fa-star" id="fullStarSmall2"></i>
-                    <i class="fa fa-star" id="fullStarSmall3"></i>
-                    <i class="fa fa-star" id="fullStarSmall4"></i>
-                    <i class="fa fa-star" id="fullStarSmall5"></i>
+                    <i class="fa fa-star" {% if review.hiring != '5' and review.hiring != '4' and review.hiring != '3' and review.hiring != '2' %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                    <i class="fa fa-star" {% if review.hiring != '5' and review.hiring != '4' and review.hiring != '3' %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                    <i class="fa fa-star" {% if review.hiring != '5' and review.hiring != '4' %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                    <i class="fa fa-star" {% if review.hiring != '5' %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                 </div>
             </div>
             <div class="stars-container">
@@ -89,19 +75,12 @@
                     <i class="fa fa-star" id="emptyStarSmall4"></i>
                     <i class="fa fa-star" id="emptyStarSmall5"></i>
                 </div>
-                <div class="halfStarsReview">
-                    <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall2"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall3"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall4"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall5"></i>
-                </div>
                 <div class="fullStarsReview">
                     <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                    <i class="fa fa-star" id="fullStarSmall2"></i>
-                    <i class="fa fa-star" id="fullStarSmall3"></i>
-                    <i class="fa fa-star" id="fullStarSmall4"></i>
-                    <i class="fa fa-star" id="fullStarSmall5"></i>
+                    <i class="fa fa-star" {% if review.community != '5' and review.community != '4' and review.community != '3' and review.community != '2' %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                    <i class="fa fa-star" {% if review.community != '5' and review.community != '4' and review.community != '3' %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                    <i class="fa fa-star" {% if review.community != '5' and review.community != '4' %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                    <i class="fa fa-star" {% if review.community != '5' %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                 </div>
             </div>
             <div class="stars-container">
@@ -113,19 +92,12 @@
                     <i class="fa fa-star" id="emptyStarSmall4"></i>
                     <i class="fa fa-star" id="emptyStarSmall5"></i>
                 </div>
-                <div class="halfStarsReview">
-                    <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall2"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall3"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall4"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall5"></i>
-                </div>
                 <div class="fullStarsReview">
                     <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                    <i class="fa fa-star" id="fullStarSmall2"></i>
-                    <i class="fa fa-star" id="fullStarSmall3"></i>
-                    <i class="fa fa-star" id="fullStarSmall4"></i>
-                    <i class="fa fa-star" id="fullStarSmall5"></i>
+                    <i class="fa fa-star" {% if review.fundraising != '5' and review.fundraising != '4' and review.fundraising != '3' and review.fundraising != '2' %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                    <i class="fa fa-star" {% if review.fundraising != '5' and review.fundraising != '4' and review.fundraising != '3' %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                    <i class="fa fa-star" {% if review.fundraising != '5' and review.fundraising != '4' %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                    <i class="fa fa-star" {% if review.fundraising != '5' %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                 </div>
             </div>
             <div class="stars-container">
@@ -137,19 +109,12 @@
                     <i class="fa fa-star" id="emptyStarSmall4"></i>
                     <i class="fa fa-star" id="emptyStarSmall5"></i>
                 </div>
-                <div class="halfStarsReview">
-                    <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall2"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall3"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall4"></i>
-                    <i class="fas fa-star-half" id="halfStarSmall5"></i>
-                </div>
                 <div class="fullStarsReview">
                     <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                    <i class="fa fa-star" id="fullStarSmall2"></i>
-                    <i class="fa fa-star" id="fullStarSmall3"></i>
-                    <i class="fa fa-star" id="fullStarSmall4"></i>
-                    <i class="fa fa-star" id="fullStarSmall5"></i>
+                    <i class="fa fa-star" {% if review.corporate_dev != '5' and review.corporate_dev != '4' and review.corporate_dev != '3' and review.corporate_dev != '2' %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                    <i class="fa fa-star" {% if review.corporate_dev != '5' and review.corporate_dev != '4' and review.corporate_dev != '3' %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                    <i class="fa fa-star" {% if review.corporate_dev != '5' and review.corporate_dev != '4' %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                    <i class="fa fa-star" {% if review.corporate_dev != '5' %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                 </div>
             </div>
         </div>
