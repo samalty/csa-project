@@ -1,3 +1,35 @@
+/* <<<<<<<<<<<<<<<<<<<< Navbar >>>>>>>>>>>>>>>>>>>> */
+
+.navbar{
+    border-bottom: 3px solid #b30000;
+    background-color: #e6e6e6;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    padding-bottom: 0px;
+}
+
+.navbar-brand,
+.nav-item{
+    color: #000000;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.navbar-brand:hover{
+    color: #000000;
+}
+
+.nav-item:hover{
+    color: #ffffff;
+    background-color: #b30000;
+}
+
+.material-icons{
+    color: #000000;
+    font-size: 40px;
+}
+
 /* <<<<<<<<<<<<<<<<<<<< Body >>>>>>>>>>>>>>>>>>>> */
 
 .background{
@@ -22,7 +54,7 @@
     height: 190px;
     margin: 10px;
     border: 1px solid #e6e6e6;
-    border-radius: 5%;
+    border-radius: 0px;
     text-align: center;
     display: inline-block;
     cursor: pointer;
@@ -82,7 +114,10 @@
     height: auto;
     margin-top: 20px;
     padding: 20px;
-    background-color: #e6e6e6;
+    background-image: linear-gradient(to bottom, #e6e6ff, #ffffff);
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
 }
 
 .acc-details{
@@ -101,6 +136,10 @@
     border-bottom: 1px solid #e6e6e6
 }
 
+.acc-ratings{
+    padding: 20px 50px;
+}
+
 /* <<<<<<<<<<<<<<<<<<<< Review Detail Page >>>>>>>>>>>>>>>>>>>> */
 
 .review-main{
@@ -109,8 +148,14 @@
 }
 
 .review-ratings{
-    background-color: #e6e6e6;
-    padding-top: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background-image: linear-gradient(to bottom, #e6e6ff, #ffffff);
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
 }
 
 .review-buttons{
@@ -146,6 +191,21 @@ h1,h2,h3,h4,h5,p{
     margin-top: 15px;
     font-size: 14px;
     color: #a6a6a6;
+}
+
+.accelerator-rating{
+    margin-top: 45px;
+    font-size: 14px;
+    color: #a6a6a6;
+    text-align: center;
+}
+
+.empty-page{
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Images >>>>>>>>>>>>>>>>>>>> */

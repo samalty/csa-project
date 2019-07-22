@@ -16,31 +16,24 @@ class AcceleratorListView(ListView):
     model = Accelerator
     template_name = 'reviews/accelerators_home.html'
     context_object_name = 'accelerators'
-    ordering = ['-overall_rating']
+    ordering = ['-name']
 
-#class AcceleratorDetailView(DetailView):
-#    model = Accelerator
-#    template_name = 'reviews/accelerator_detail.html'
-
-# Testing old-style view for accelerator detail
 
 def accelerator_detail(request, pk):
     accelerator = get_object_or_404(Accelerator, pk=pk)
-    reviews = Review.objects.all()
-    print(accelerator)
-    print(len(reviews))
+    #reviews = Review.objects.all()
+    #print(accelerator)
+    #print(len(reviews))
     context = {
         'accelerator': accelerator,
         'reviews': reviews,
     }
     return render(request, 'reviews/accelerator_detail.html', context)
 
-#'reviews': Review.objects.filter(subject=accelerator.name).order_by('-date_posted')
-# End test
 
 class AcceleratorCreateView(LoginRequiredMixin, CreateView):
     model = Accelerator
-    fields = ['name', 'website', 'locations', 'bio', 'sector_focus', 'stage', 'deal', 'duration', 'overall_rating', 'logo'] # Need to remove overall_rating once a foreign key has been created
+    fields = ['name', 'website', 'locations', 'bio', 'sector_focus', 'stage', 'deal', 'duration', 'logo']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -48,7 +41,7 @@ class AcceleratorCreateView(LoginRequiredMixin, CreateView):
 
 class AcceleratorUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Accelerator
-    fields = ['name', 'website', 'locations', 'bio', 'sector_focus', 'stage', 'deal', 'duration', 'overall_rating', 'logo'] # Need to remove overall_rating once a foreign key has been created
+    fields = ['name', 'website', 'locations', 'bio', 'sector_focus', 'stage', 'deal', 'duration', 'logo']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

@@ -2,6 +2,7 @@
 {% block page_title %}Reviews{% endblock %}
 {% block content %}
     <div class="container">
+    {% if reviews %}
         {% for review in reviews %}
             <div class="acc-reviews">
                 <h4><b><a href="{% url 'review_detail' review.id %}">Review Title</a></b></h4>
@@ -28,9 +29,16 @@
                     <i class="fa fa-star" {% if review.overall < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                 </div>
                 <br>
+                <p class="date-author">({{ review.overall }} out of 5)</p>
                 <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
                 <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.id %}">Read more</a></p>
             </div>
         {% endfor %}
+    {% else %}
+        <div class="empty-page">
+            <p>Sorry. No reviews have yet been posted on this site.</p>
+            <p>Be the first to post a review by clicking the relevant tab, above.</p>
+        </div>
+    {% endif %}
     </div>
 {% endblock %}

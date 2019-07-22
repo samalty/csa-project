@@ -16,19 +16,21 @@
                     <i class="fa fa-star" id="emptyStar5"></i>
                 </div>
                 <div class="halfStars">
-                    <i class="fas fa-star-half" id="halfStar1"></i>
-                    <i class="fas fa-star-half" {% if accelerator.overall_rating < 1.25 %} style="display:none;" {% endif %} id="halfStar2"></i>
-                    <i class="fas fa-star-half" {% if accelerator.overall_rating < 2.25 %} style="display:none;" {% endif %} id="halfStar3"></i>
-                    <i class="fas fa-star-half" {% if accelerator.overall_rating < 3.25 %} style="display:none;" {% endif %} id="halfStar4"></i>
-                    <i class="fas fa-star-half" {% if accelerator.overall_rating < 4.25 %} style="display:none;" {% endif %} id="halfStar5"></i>
+                    <i class="fas fa-star-half" {% if accelerator.avg_rating < 0.25 %} style="display:none;" {% endif %} id="halfStar1"></i>
+                    <i class="fas fa-star-half" {% if accelerator.avg_rating < 1.25 %} style="display:none;" {% endif %} id="halfStar2"></i>
+                    <i class="fas fa-star-half" {% if accelerator.avg_rating < 2.25 %} style="display:none;" {% endif %} id="halfStar3"></i>
+                    <i class="fas fa-star-half" {% if accelerator.avg_rating < 3.25 %} style="display:none;" {% endif %} id="halfStar4"></i>
+                    <i class="fas fa-star-half" {% if accelerator.avg_rating < 4.25 %} style="display:none;" {% endif %} id="halfStar5"></i>
                 </div>
                 <div class="fullStars">
-                    <i class="fa fa-star" id="fullStar1"></i>
-                    <i class="fa fa-star" {% if accelerator.overall_rating < 1.75 %} style="display:none;" {% endif %} id="fullStar2"></i>
-                    <i class="fa fa-star" {% if accelerator.overall_rating < 2.75 %} style="display:none;" {% endif %} id="fullStar3"></i>
-                    <i class="fa fa-star" {% if accelerator.overall_rating < 3.75 %} style="display:none;" {% endif %} id="fullStar4"></i>
-                    <i class="fa fa-star" {% if accelerator.overall_rating < 4.75 %} style="display:none;" {% endif %} id="fullStar5"></i>
+                    <i class="fa fa-star" {% if accelerator.avg_rating < 0.75 %} style="display:none;" {% endif %} id="fullStar1"></i>
+                    <i class="fa fa-star" {% if accelerator.avg_rating < 1.75 %} style="display:none;" {% endif %} id="fullStar2"></i>
+                    <i class="fa fa-star" {% if accelerator.avg_rating < 2.75 %} style="display:none;" {% endif %} id="fullStar3"></i>
+                    <i class="fa fa-star" {% if accelerator.avg_rating < 3.75 %} style="display:none;" {% endif %} id="fullStar4"></i>
+                    <i class="fa fa-star" {% if accelerator.avg_rating < 4.75 %} style="display:none;" {% endif %} id="fullStar5"></i>
                 </div>
+                <br>
+                <p class="accelerator-rating">({{ accelerator.avg_rating }} out of 5)</p>
             </div>
             <div class="acc-header-inner-sm">
                 <p><b>Website: </b><a href="{{ accelerator.website }}">{{ accelerator.website }}</a></p>
@@ -44,6 +46,15 @@
             <p><b>Stage: </b>{{ accelerator.stage }}</p>
             <p><b>Deal: </b>{{ accelerator.deal }}</p>
             <p><b>Duration: </b>{{ accelerator.duration }}</p>
+            <br>
+            <p>{{ accelerator.avg_mentorship }}</p>
+            <p>{{ accelerator.avg_hiring }}</p>
+            <p>{{ accelerator.avg_community }}</p>
+            <p>{{ accelerator.avg_fundraising }}</p>
+            <p>{{ accelerator.avg_corporate }}</p>
+        </div>
+        <div class="acc-ratings">
+            <canvas id="accRatings"></canvas>
         </div>
         {% if accelerator.author == user %}
             <a class="btn btn-secondary btn-sm" href="{% url 'accelerator_update' accelerator.id %}">Update</a>
@@ -52,6 +63,7 @@
         <a class="btn btn-outline-secondary" href="{% url 'review_create' %}">Leave A Review</a>
         <hr>
         <h2><b>Reviews for {{ accelerator.name }}</b></h2>
+        <!--
         {% if accelerator.name == review.subject %}
             {% for review in reviews %}
                 <div class="acc-reviews">
@@ -65,17 +77,17 @@
                     </div>
                     <div class="halfStarsSmall">
                         <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                        <i class="fas fa-star-half" {% if accelerator.overall_rating < 1.25 %} style="display:none;" {% endif %} id="halfStarSmall2"></i>
-                        <i class="fas fa-star-half" {% if accelerator.overall_rating < 2.25 %} style="display:none;" {% endif %} id="halfStarSmall3"></i>
-                        <i class="fas fa-star-half" {% if accelerator.overall_rating < 3.25 %} style="display:none;" {% endif %} id="halfStarSmall4"></i>
-                        <i class="fas fa-star-half" {% if accelerator.overall_rating < 4.25 %} style="display:none;" {% endif %} id="halfStarSmall5"></i>
+                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 1.25 %} style="display:none;" {% endif %} id="halfStarSmall2"></i>
+                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 2.25 %} style="display:none;" {% endif %} id="halfStarSmall3"></i>
+                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 3.25 %} style="display:none;" {% endif %} id="halfStarSmall4"></i>
+                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 4.25 %} style="display:none;" {% endif %} id="halfStarSmall5"></i>
                     </div>
                     <div class="fullStarsSmall">
                         <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                        <i class="fa fa-star" {% if accelerator.overall_rating < 1.75 %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
-                        <i class="fa fa-star" {% if accelerator.overall_rating < 2.75 %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
-                        <i class="fa fa-star" {% if accelerator.overall_rating < 3.75 %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
-                        <i class="fa fa-star" {% if accelerator.overall_rating < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
+                        <i class="fa fa-star" {% if accelerator.avg_rating < 1.75 %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                        <i class="fa fa-star" {% if accelerator.avg_rating < 2.75 %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                        <i class="fa fa-star" {% if accelerator.avg_rating < 3.75 %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                        <i class="fa fa-star" {% if accelerator.avg_rating < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                     </div>
                     <br>
                     <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
@@ -83,5 +95,54 @@
                 </div>
             {% endfor %}
         {% endif %}
+            -->
     </div>
+    <script>
+        var myChart = document.getElementById('accRatings').getContext('2d');
+        Chart.defaults.global.defaultFontFamily = 'sans-serif';
+        Chart.defaults.global.defaultFontSize = 16;
+        Chart.defaults.global.defaultFontColor = '#000';
+        var ratingsChart = new Chart(myChart, {
+            type:'horizontalBar',
+            data:{
+                labels:['Mentorship', 'Hiring', 'Community', 'Fundraising', 'Corporate Development'],
+                datasets:[{
+                    label: 'Average Rating',
+                    data:[
+                        4.1,
+                        4.4,
+                        3.9,
+                        3.6,
+                        4.2
+                    ],
+                    backgroundColor: '#e68a00',
+                    hoverBackgroundColor: '#cc7a00',
+                    borderColor: '#cc7a00',
+                    borderWidth: '2',
+                }]
+            },
+            options:{
+                showLines: false,
+                scales:{
+                    yAxes:[{
+                        barPercentage: 0.5,
+                    }],
+                    xAxes: [{
+                        ticks:{
+                            beginAtZero: true,
+                            max: 5,
+                        }
+                    }],
+                },
+                title:{
+                    display:true,
+                    text:'Average Ratings',
+                    fontSize: 20,
+                },
+                legend:{
+                    display:false,
+                },
+            },
+        });
+    </script>
 {% endblock %}

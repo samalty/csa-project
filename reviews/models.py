@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
@@ -12,7 +13,12 @@ class Accelerator(models.Model):
     stage = models.CharField(max_length=100)
     deal = models.CharField(max_length=200)
     duration = models.CharField(max_length=100)
-    overall_rating = models.DecimalField(decimal_places=2, max_digits=3)
+    avg_rating = models.DecimalField(decimal_places=2, max_digits=3)
+    avg_mentorship = models.DecimalField(decimal_places=2, max_digits=3)
+    avg_hiring = models.DecimalField(decimal_places=2, max_digits=3)
+    avg_community = models.DecimalField(decimal_places=2, max_digits=3)
+    avg_fundraising = models.DecimalField(decimal_places=2, max_digits=3)
+    avg_corporate = models.DecimalField(decimal_places=2, max_digits=3)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='admin')
     logo = models.ImageField(default='default.jpg', upload_to='logos')
 
@@ -23,7 +29,43 @@ class Accelerator(models.Model):
     def get_absolute_url(self):
         return reverse('accelerator_detail', kwargs={'pk': self.pk})
 
-# Accelerator.objects.filter(name='')
+    @property
+    def avg_rating(self):
+        quantity = Review.objects.filter(subject=self)
+        overall_result = Review.objects.filter(subject=self).aggregate(avg_rating=Avg('overall'))['avg_rating']
+        return overall_result if len(quantity) > 0 else 0
+    
+    @property
+    def avg_mentorship(self):
+        quantity = Review.objects.filter(subject=self)
+        mentorship_result = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg('mentorship'))['avg_mentorship']
+        return mentorship_result if len(quantity) > 0 else 0
+    
+    @property
+    def avg_hiring(self):
+        quantity = Review.objects.filter(subject=self)
+        hiring_result = Review.objects.filter(subject=self).aggregate(avg_hiring=Avg('hiring'))['avg_hiring']
+        return hiring_result if len(quantity) > 0 else 0
+    
+    @property
+    def avg_community(self):
+        quantity = Review.objects.filter(subject=self)
+        community_result = Review.objects.filter(subject=self).aggregate(avg_community=Avg('community'))['avg_community']
+        return community_result if len(quantity) > 0 else 0
+    
+    @property
+    def avg_fundraising(self):
+        quantity = Review.objects.filter(subject=self)
+        fundraising_result = Review.objects.filter(subject=self).aggregate(avg_fundraising=Avg('fundraising'))['avg_fundraising']
+        return fundraising_result if len(quantity) > 0 else 0
+    
+    @property
+    def avg_corporate(self):
+        quantity = Review.objects.filter(subject=self)
+        corporate_result = Review.objects.filter(subject=self).aggregate(avg_corporate=Avg('corporate_dev'))['avg_corporate']
+        return corporate_result if len(quantity) > 0 else 0
+
+    # self.review_set.aggregate(avg_rating=Avg('overall')).avg_rating
 
 class Review(models.Model):
     RATINGS = (
@@ -50,8 +92,8 @@ class Review(models.Model):
     def get_absolute_url(self):
         return reverse('review_detail', kwargs={'pk': self.pk})
 
-    def save(self):
+    def save(self, *args, **kwargs):
+        # set the overall field when the model is saved
         self.overall = (int(self.mentorship) + int(self.hiring) + int(self.community) + \
             int(self.fundraising) + int(self.corporate_dev)) / 5
-
-        super(Review, self).save()
+        super(Review, self).save(*args, **kwargs)
