@@ -20,7 +20,7 @@ class Accelerator(models.Model):
     avg_fundraising = models.DecimalField(decimal_places=2, max_digits=3)
     avg_corporate = models.DecimalField(decimal_places=2, max_digits=3)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='admin')
-    logo = models.ImageField(default='default.jpg', upload_to='logos')
+    logo = models.ImageField(upload_to='logos')
 
     def __str__(self):
         return self.name

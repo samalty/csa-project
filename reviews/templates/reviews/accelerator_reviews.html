@@ -1,0 +1,44 @@
+{% extends 'accounts/base.html' %}
+{% block page_title %}Reviews for {{ accelerator.name }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="acc-reviews">
+            {% if reviews %}
+                <h2><b>Reviews for {{ accelerator.name }}</b></h2>
+                <br>
+                {% for review in reviews %}
+                    <h4><b><a href="{% url 'review_detail' review.id %}">Review Title</a></b></h4>
+                    <div class="emptyStarsSmall">
+                        <i class="fa fa-star" id="emptyStarSmall1"></i>                        
+                        <i class="fa fa-star" id="emptyStarSmall2"></i>
+                        <i class="fa fa-star" id="emptyStarSmall3"></i>
+                        <i class="fa fa-star" id="emptyStarSmall4"></i>
+                        <i class="fa fa-star" id="emptyStarSmall5"></i>
+                    </div>
+                    <div class="halfStarsSmall">
+                        <i class="fas fa-star-half" id="halfStarSmall1"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 1.25 %} style="display:none;" {% endif %} id="halfStarSmall2"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 2.25 %} style="display:none;" {% endif %} id="halfStarSmall3"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 3.25 %} style="display:none;" {% endif %} id="halfStarSmall4"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 4.25 %} style="display:none;" {% endif %} id="halfStarSmall5"></i>
+                    </div>
+                    <div class="fullStarsSmall">
+                        <i class="fa fa-star" id="fullStarSmall1"></i>                            
+                        <i class="fa fa-star" {% if review.overall < 1.75 %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                        <i class="fa fa-star" {% if review.overall < 2.75 %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                        <i class="fa fa-star" {% if review.overall < 3.75 %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                        <i class="fa fa-star" {% if review.overall < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
+                    </div>
+                    <br>
+                    <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
+                    <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.id %}">Read more</a></p>
+                {% endfor %}
+            {% else %}
+                <div class="empty-page">
+                    <p>Sorry. No reviews have yet been posted for this company.</p>
+                    <p>Be the first to post a review by clicking the relevant tab, above.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

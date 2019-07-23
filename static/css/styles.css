@@ -1,8 +1,8 @@
 /* <<<<<<<<<<<<<<<<<<<< Navbar >>>>>>>>>>>>>>>>>>>> */
 
 .navbar{
-    border-bottom: 3px solid #b30000;
-    background-color: #e6e6e6;
+    border-bottom: 3px solid #003366;
+    background-image: linear-gradient(to bottom, #e6e6ff, #ffffff);
     position: fixed;
     width: 100%;
     z-index: 100;
@@ -13,16 +13,43 @@
 .nav-item{
     color: #000000;
     margin-bottom: 0px;
-    padding: 5px;
+    padding: 7px;
 }
 
-.navbar-brand:hover{
+.dropdown{
+    color: #000000;
+    padding: 7px;
+    margin-top: 7px;
+}
+
+.dropdown-toggle{
     color: #000000;
 }
 
-.nav-item:hover{
-    color: #ffffff;
-    background-color: #b30000;
+.dropdown-menu{
+    margin-top: -0.5px;
+    border: 3px solid #003366;
+    border-top: none;
+    border-top-right-radius: 0%;
+    border-top-left-radius: 0%;
+    padding: 5px;
+}
+
+.dropdown-link{
+    color: #000000;
+    margin: 5px;
+}
+
+.dropdown-link:hover{
+    color: #000000;
+    text-decoration: none;
+}
+
+.navbar-brand:hover,
+.nav-item:hover,
+.dropdown-toggle:hover{
+    color: #000000;
+    text-decoration: none;
 }
 
 .material-icons{
@@ -32,6 +59,16 @@
 
 /* <<<<<<<<<<<<<<<<<<<< Body >>>>>>>>>>>>>>>>>>>> */
 
+html{
+    height: 100%;
+}
+
+body{
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 100px;
+}
+
 .background{
     width: 100%;
     height: auto;
@@ -40,9 +77,30 @@
 .container{
     box-sizing: border-box;
     max-width: 1000px;
-    height: auto;
     padding: 40px;
     text-align: left;
+}
+
+/* <<<<<<<<<<<<<<<<<<<< Register & Login Form Pages >>>>>>>>>>>>>>>>>>>> */
+
+.login-form{
+    background-image: linear-gradient(to right, #e6e6ff, #ffffff);
+    opacity: 0.9;
+    border: 3px solid #003366;
+    border-radius: 2%;
+    padding: 15px;
+}
+
+/* <<<<<<<<<<<<<<<<<<<< Accelerator Form Page >>>>>>>>>>>>>>>>>>>> */
+
+.form-squeeze{
+    max-width: 600px;
+    margin: auto;
+}
+
+.login-form-squeeze{
+    max-width: 400px;
+    margin: auto;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Accelerators Home Page >>>>>>>>>>>>>>>>>>>> */
@@ -208,6 +266,42 @@ h1,h2,h3,h4,h5,p{
     margin-bottom: 150px;
 }
 
+/* <<<<<<<<<<<<<<<<<<<< Buttons >>>>>>>>>>>>>>>>>>>> */
+
+.options{
+    text-align: center;
+}
+
+.btn{
+    border: 1px solid #d3d3d3;
+    color: #ffffff;
+    margin: 10px 5px;
+    padding: 10px;
+    border-radius: 0px;
+}
+
+.btn:hover{
+    color: #ffffff;
+}
+
+#update{
+    background-image: linear-gradient(to bottom, #ffcc00, #cca300);
+}
+
+#delete{
+    background-image: linear-gradient(to bottom, #e60000, #b30000);
+}
+
+#review,
+#view{
+    background-image: linear-gradient(to bottom, #004d99, #003366);
+}
+
+#submit{
+    background-image: linear-gradient(to bottom, #00cc00, #009900);
+    margin: auto;
+}
+
 /* <<<<<<<<<<<<<<<<<<<< Images >>>>>>>>>>>>>>>>>>>> */
 
 .acc-logo-list{
@@ -311,4 +405,15 @@ footer{
     width: 100%;
     height: 100px;
     background-color: #333333;
+    position: absolute;
+    bottom: 0;
+}
+
+.myradio{
+    display: inline-block;
+    margin: 10px 5px;
+}
+
+label.id_mentorship_0{
+    color: #ffffff;
 }

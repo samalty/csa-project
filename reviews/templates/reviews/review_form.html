@@ -3,19 +3,58 @@
 {% block page_title %}Leave A Review{% endblock %}
 {% block content %}
     <div class="container">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend>Leave A Review</legend>
-                {{ form|crispy }}
-                <!--{{ form.as_p }}
-                <{% for radio in form.mentorship %}
-                <div class="myradio">
-                    {{ radio }}
-                </div>
-                {% endfor %}-->
-            </fieldset>
-            <button class="btn" type="submit">Post Review</button>
-        </form>
+        <div class="form-squeeze">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend>Leave A Review</legend>
+                    <!--{{ form.as_p }}-->
+                    {{ form.subject }}
+                    <br>
+                    {{ form.feedback }}
+                    <hr>
+                    <label>Mentorship</label>
+                    <br>
+                    {% for radio in form.mentorship %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endfor %}
+                    <br>
+                    <label>Hiring</label>
+                    <br>
+                    {% for radio in form.hiring %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endfor %}
+                    <br>
+                    <label>Community</label>
+                    <br>
+                    {% for radio in form.community %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endfor %}
+                    <br>
+                    <label>Fundraising</label>
+                    <br>
+                    {% for radio in form.fundraising %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endfor %}
+                    <br>
+                    <label>Corporate Development</label>
+                    <br>
+                    {% for radio in form.corporate_dev %}
+                    <div class="myradio">
+                        {{ radio }}
+                    </div>
+                    {% endfor %}
+                </fieldset>
+                <button class="btn" id="submit" type="submit">Post Review</button>
+            </form>
+        </div>
     </div>
 {% endblock %}

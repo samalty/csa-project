@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.core import serializers
 from .models import Accelerator, Review
 from .forms import ReviewForm, RawReviewForm
 
@@ -21,14 +23,23 @@ class AcceleratorListView(ListView):
 
 def accelerator_detail(request, pk):
     accelerator = get_object_or_404(Accelerator, pk=pk)
-    #reviews = Review.objects.all()
-    #print(accelerator)
-    #print(len(reviews))
+    reviews = Review.objects.filter(subject=accelerator).order_by('-date_posted')[:3]
     context = {
         'accelerator': accelerator,
         'reviews': reviews,
     }
     return render(request, 'reviews/accelerator_detail.html', context)
+
+def accelerator_reviews(request, pk):
+    accelerator = get_object_or_404(Accelerator, pk=pk)
+    reviews = Review.objects.filter(subject=accelerator).order_by('-date_posted')
+    print(accelerator.name)
+    print(len(reviews))
+    context = {
+        'accelerator': accelerator,
+        'reviews': reviews,
+    }
+    return render(request, 'reviews/accelerator_reviews.html', context)
 
 
 class AcceleratorCreateView(LoginRequiredMixin, CreateView):
@@ -74,26 +85,26 @@ class ReviewDetailView(DetailView):
     model = Review
     template_name = 'reviews/review_detail.html'
 
-class ReviewCreateView(LoginRequiredMixin, CreateView):
-    model = Review
-    fields = ['subject', 'feedback', 'mentorship', 'hiring', 'community', 'fundraising', 'corporate_dev']
+#class ReviewCreateView(LoginRequiredMixin, CreateView):
+#    model = Review
+#    fields = ['subject', 'feedback', 'mentorship', 'hiring', 'community', 'fundraising', 'corporate_dev']
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+#    def form_valid(self, form):
+#        form.instance.author = self.request.user
+#        return super().form_valid(form)
 
-#def review_create(request):
-#    review_form = RawReviewForm()
-#    if request.method == 'POST':
-#        review_form = RawReviewForm(request.POST)
-#        if review_form.is_valid():
-            #eview_form.save()
-#            Review.objects.create(**review_form.cleaned_data)
-#            return redirect(reviews)
-#    context = {
-#        'form': review_form
-#    }
-#    return render(request, 'reviews/review_form.html', context)
+def review_create(request):
+    review_form = RawReviewForm(request.POST or None)
+    if request.method == 'POST':
+        review_form = RawReviewForm(request.POST)
+        if review_form.is_valid():
+            review_form.save()
+            Review.objects.create(**review_form.cleaned_data)
+            return redirect(reviews)
+    context = {
+        'form': review_form
+    }
+    return render(request, 'reviews/review_form.html', context)
 
 
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

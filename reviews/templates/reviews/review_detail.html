@@ -26,7 +26,7 @@
                 <i class="fa fa-star" {% if review.overall < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
             </div>
             <br>
-            <p class="date-author">({{ review.overall }} out of 5)</p>
+            <p class="date-author">({{ review.overall|floatformat:2 }} out of 5)</p>
             <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
             <p>{{ review.subject }}</p>
             <hr>

@@ -30,7 +30,7 @@
                     <i class="fa fa-star" {% if accelerator.avg_rating < 4.75 %} style="display:none;" {% endif %} id="fullStar5"></i>
                 </div>
                 <br>
-                <p class="accelerator-rating">({{ accelerator.avg_rating }} out of 5)</p>
+                <p class="accelerator-rating">({{ accelerator.avg_rating|floatformat:2 }} out of 5)</p>
             </div>
             <div class="acc-header-inner-sm">
                 <p><b>Website: </b><a href="{{ accelerator.website }}">{{ accelerator.website }}</a></p>
@@ -46,27 +46,24 @@
             <p><b>Stage: </b>{{ accelerator.stage }}</p>
             <p><b>Deal: </b>{{ accelerator.deal }}</p>
             <p><b>Duration: </b>{{ accelerator.duration }}</p>
-            <br>
-            <p>{{ accelerator.avg_mentorship }}</p>
-            <p>{{ accelerator.avg_hiring }}</p>
-            <p>{{ accelerator.avg_community }}</p>
-            <p>{{ accelerator.avg_fundraising }}</p>
-            <p>{{ accelerator.avg_corporate }}</p>
         </div>
         <div class="acc-ratings">
             <canvas id="accRatings"></canvas>
         </div>
-        {% if accelerator.author == user %}
-            <a class="btn btn-secondary btn-sm" href="{% url 'accelerator_update' accelerator.id %}">Update</a>
-            <a class="btn btn-danger btn-sm" href="{% url 'accelerator_delete' accelerator.id %}">Delete</a>
-        {% endif %}
-        <a class="btn btn-outline-secondary" href="{% url 'review_create' %}">Leave A Review</a>
         <hr>
-        <h2><b>Reviews for {{ accelerator.name }}</b></h2>
-        <!--
-        {% if accelerator.name == review.subject %}
-            {% for review in reviews %}
-                <div class="acc-reviews">
+        <div class="options">
+            {% if accelerator.author == user %}
+                <a class="btn" id="update" href="{% url 'accelerator_update' accelerator.id %}">Update Company</a>
+                <a class="btn" id="delete" href="{% url 'accelerator_delete' accelerator.id %}">Delete Company</a>
+            {% endif %}
+            <a class="btn" id="review" href="{% url 'review_create' %}">Leave A Review</a>
+            <a class="btn" id="view" href="{% url 'accelerator_reviews' accelerator.id %}">See All Reviews For {{ accelerator.name }}</a>
+        </div>
+        <div class="acc-reviews">
+            {% if reviews %}
+                <h2><b>Recent reviews for {{ accelerator.name }}</b></h2>
+                <br>
+                {% for review in reviews %}
                     <h4><b><a href="{% url 'review_detail' review.id %}">Review Title</a></b></h4>
                     <div class="emptyStarsSmall">
                         <i class="fa fa-star" id="emptyStarSmall1"></i>                        
@@ -77,25 +74,27 @@
                     </div>
                     <div class="halfStarsSmall">
                         <i class="fas fa-star-half" id="halfStarSmall1"></i>
-                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 1.25 %} style="display:none;" {% endif %} id="halfStarSmall2"></i>
-                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 2.25 %} style="display:none;" {% endif %} id="halfStarSmall3"></i>
-                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 3.25 %} style="display:none;" {% endif %} id="halfStarSmall4"></i>
-                        <i class="fas fa-star-half" {% if accelerator.avg_rating < 4.25 %} style="display:none;" {% endif %} id="halfStarSmall5"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 1.25 %} style="display:none;" {% endif %} id="halfStarSmall2"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 2.25 %} style="display:none;" {% endif %} id="halfStarSmall3"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 3.25 %} style="display:none;" {% endif %} id="halfStarSmall4"></i>
+                        <i class="fas fa-star-half" {% if review.overall < 4.25 %} style="display:none;" {% endif %} id="halfStarSmall5"></i>
                     </div>
                     <div class="fullStarsSmall">
                         <i class="fa fa-star" id="fullStarSmall1"></i>                            
-                        <i class="fa fa-star" {% if accelerator.avg_rating < 1.75 %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
-                        <i class="fa fa-star" {% if accelerator.avg_rating < 2.75 %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
-                        <i class="fa fa-star" {% if accelerator.avg_rating < 3.75 %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
-                        <i class="fa fa-star" {% if accelerator.avg_rating < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
+                        <i class="fa fa-star" {% if review.overall < 1.75 %} style="display:none;" {% endif %} id="fullStarSmall2"></i>
+                        <i class="fa fa-star" {% if review.overall < 2.75 %} style="display:none;" {% endif %} id="fullStarSmall3"></i>
+                        <i class="fa fa-star" {% if review.overall < 3.75 %} style="display:none;" {% endif %} id="fullStarSmall4"></i>
+                        <i class="fa fa-star" {% if review.overall < 4.75 %} style="display:none;" {% endif %} id="fullStarSmall5"></i>
                     </div>
                     <br>
                     <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
                     <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.id %}">Read more</a></p>
-                </div>
-            {% endfor %}
-        {% endif %}
-            -->
+                {% endfor %}
+            {% else %}
+                <p style="text-align:center">Sorry. No reviews have yet been posted for this company.</p>
+                <p style="text-align:center">Be the first to post a review by clicking the relevant tab, above.</p>
+            {% endif %}
+        </div>
     </div>
     <script>
         var myChart = document.getElementById('accRatings').getContext('2d');
@@ -107,7 +106,6 @@
             data:{
                 labels:['Mentorship', 'Hiring', 'Community', 'Fundraising', 'Corporate Development'],
                 datasets:[{
-                    label: 'Average Rating',
                     data:[
                         4.1,
                         4.4,
@@ -133,11 +131,6 @@
                             max: 5,
                         }
                     }],
-                },
-                title:{
-                    display:true,
-                    text:'Average Ratings',
-                    fontSize: 20,
                 },
                 legend:{
                     display:false,

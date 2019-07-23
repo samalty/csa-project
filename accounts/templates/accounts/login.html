@@ -3,16 +3,18 @@
 {% block page_title %}Log In{% endblock %}
 {% block content %}
     <div class="container">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend>Log In</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <button class="btn" type="submit">Log In</button>
-        </form>
-        <div>
-            <p>Not a registered user? <a href="{% url 'register' %}">Create an account here.</a></p>
+        <div class="login-form-squeeze">
+            <form method="POST" class="login-form">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend>Log In</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <button class="btn" id="submit" type="submit">Log In</button>
+            </form>
+            <div>
+                <p>Not a registered user? <a href="{% url 'register' %}">Create an account here.</a></p>
+            </div>
         </div>
     </div>
 {% endblock %}
