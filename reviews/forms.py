@@ -5,6 +5,14 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['subject', 'feedback', 'mentorship', 'hiring', 'community', 'fundraising', 'corporate_dev']
+        widgets = {
+            'mentorship': forms.RadioSelect,
+            'hiring': forms.RadioSelect,
+            'community': forms.RadioSelect,
+            'fundraising': forms.RadioSelect,
+            'corporate_dev': forms.RadioSelect,
+        }
+
 
 class RawReviewForm(forms.Form):
     RATINGS = (
@@ -14,11 +22,7 @@ class RawReviewForm(forms.Form):
         ('4', '4'),
         ('5', '5'),
     )
-    subject = forms.CharField(label='Subject', 
-                                widget=forms.TextInput(
-                                    attrs={
-                                        "placeholder":"What company are you reviewing?",
-                                    }))
+    subject = forms.CharField()
     feedback = forms.CharField(
                     label='', 
                     widget=forms.Textarea(

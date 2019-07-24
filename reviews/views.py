@@ -88,24 +88,26 @@ class ReviewDetailView(DetailView):
 #class ReviewCreateView(LoginRequiredMixin, CreateView):
 #    model = Review
 #    fields = ['subject', 'feedback', 'mentorship', 'hiring', 'community', 'fundraising', 'corporate_dev']
-
+    
 #    def form_valid(self, form):
 #        form.instance.author = self.request.user
 #        return super().form_valid(form)
 
 def review_create(request):
-    review_form = RawReviewForm(request.POST or None)
+    review_form = ReviewForm(request.POST or None)
     if request.method == 'POST':
-        review_form = RawReviewForm(request.POST)
+        review_form = ReviewForm(request.POST)
         if review_form.is_valid():
-            review_form.save()
+            new_post = review_form.save(commit=False)
             Review.objects.create(**review_form.cleaned_data)
+            new_post.author = request.user
+            new_post.save()
+            #review_form.save()
             return redirect(reviews)
     context = {
         'form': review_form
     }
     return render(request, 'reviews/review_form.html', context)
-
 
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Review

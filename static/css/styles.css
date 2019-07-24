@@ -79,6 +79,8 @@ body{
     max-width: 1000px;
     padding: 40px;
     text-align: left;
+    border-left: 3px solid #003366;
+    border-right: 3px solid #003366;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Register & Login Form Pages >>>>>>>>>>>>>>>>>>>> */
@@ -94,8 +96,9 @@ body{
 /* <<<<<<<<<<<<<<<<<<<< Accelerator Form Page >>>>>>>>>>>>>>>>>>>> */
 
 .form-squeeze{
-    max-width: 600px;
+    max-width: 700px;
     margin: auto;
+    padding: 20px 60px;
 }
 
 .login-form-squeeze{
@@ -224,7 +227,7 @@ body{
 .stars-container{
     box-sizing: border-box;
     display: inline-block;
-    width: 33%;
+    width: 32.9%;
     height: 100px;
     text-align: center;
 }
@@ -241,8 +244,23 @@ body{
 
 /* <<<<<<<<<<<<<<<<<<<< Text >>>>>>>>>>>>>>>>>>>> */
 
-h1,h2,h3,h4,h5,p{
+h1,h2,h3,h4,h5,p,
+.nav-link,
+.dropdown-link,
+.dropdown-toggle,
+.navbar-brand,
+legend,
+label{
     color: #000000;
+    font-family: 'Roboto Slab', serif;
+    /*font-family: 'Exo 2', sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;*/
+}
+
+p{
+    font-size: 16px;
 }
 
 .date-author{
@@ -409,11 +427,27 @@ footer{
     bottom: 0;
 }
 
-.myradio{
-    display: inline-block;
-    margin: 10px 5px;
+
+/* <<<<<<<<<<<<<<<<<<<< Form Stars >>>>>>>>>>>>>>>>>>>> */
+
+.radio{
+    display: none;
+    transform: scale(1.7);
 }
 
-label.id_mentorship_0{
-    color: #ffffff;
+.stars-con{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    display: inline-block;
+    width: 49.5%;
+    text-align: center;
+}
+
+.formStars{
+    font-size: 30px;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+    cursor: pointer;
+    color: #e6e6e6;
+    position: relative;
 }
