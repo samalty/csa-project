@@ -33,9 +33,9 @@
                 <p class="accelerator-rating">({{ accelerator.avg_rating|floatformat:2 }} out of 5)</p>
             </div>
             <div class="acc-header-inner-sm">
-                <p><b>Website: </b><a href="{{ accelerator.website }}">{{ accelerator.website }}</a></p>
+                <p class="blue-text"><b>Website: </b><a href="{{ accelerator.website }}">{{ accelerator.website }}</a></p>
                 <hr>
-                <p><b>Locations: </b>{{ accelerator.locations }}</p>
+                <p class="blue-text"><b>Locations: </b>{{ accelerator.locations }}</p>
             </div>
         </div>
         <div class="acc-bio">
@@ -53,18 +53,18 @@
         <hr>
         <div class="options">
             {% if accelerator.author == user %}
-                <a class="btn" id="update" href="{% url 'accelerator_update' accelerator.id %}">Update Company</a>
-                <a class="btn" id="delete" href="{% url 'accelerator_delete' accelerator.id %}">Delete Company</a>
+                <a class="btn" id="update" href="{% url 'accelerator_update' accelerator.pk %}">Update Company</a>
+                <a class="btn" id="delete" href="{% url 'accelerator_delete' accelerator.pk %}">Delete Company</a>
             {% endif %}
-            <a class="btn" id="review" href="{% url 'review_create' %}">Leave A Review</a>
-            <a class="btn" id="view" href="{% url 'accelerator_reviews' accelerator.id %}">See All Reviews For {{ accelerator.name }}</a>
+            <a class="btn" id="review" href="{% url 'review_post' accelerator.pk %}">Leave A Review</a>
+            <a class="btn" id="view" href="{% url 'accelerator_reviews' accelerator.pk %}">See All Reviews For {{ accelerator.name }}</a>
         </div>
         <div class="acc-reviews">
             {% if reviews %}
                 <h2><b>Recent reviews for {{ accelerator.name }}</b></h2>
                 <br>
                 {% for review in reviews %}
-                    <h4><b><a href="{% url 'review_detail' review.id %}">Review Title</a></b></h4>
+                    <h4><b>{{ review.title }}</b></h4>
                     <div class="emptyStarsSmall">
                         <i class="fa fa-star" id="emptyStarSmall1"></i>                        
                         <i class="fa fa-star" id="emptyStarSmall2"></i>
@@ -88,7 +88,8 @@
                     </div>
                     <br>
                     <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
-                    <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.id %}">Read more</a></p>
+                    <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.pk %}">Read more</a></p>
+                    <hr>
                 {% endfor %}
             {% else %}
                 <p style="text-align:center">Sorry. No reviews have yet been posted for this company.</p>

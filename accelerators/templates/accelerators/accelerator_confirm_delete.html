@@ -9,7 +9,7 @@
                 <h3>Are you sure you want to delete the page for {{ accelerator.name }}?</h3>
             </fieldset>
             <button class="btn btn-outline-danger" type="submit">Yes, delete page</button>
-            <a class="btn btn-outline-secondary" href="{% url 'accelerator_detail' accelerator.id %}">No, back to page</a>
+            <a class="btn btn-outline-secondary" href="{% url 'accelerator_detail' accelerator.pk %}">No, back to page</a>
         </form>
     </div>
 {% endblock %}

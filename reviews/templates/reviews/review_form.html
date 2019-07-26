@@ -7,79 +7,85 @@
             <form method="POST" class="reviewForm">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend>Leave A Review</legend>
-                    <!--{{ form|crispy }}-->
-                    {{ form.subject }}
+                    <legend>Leave a review</legend>
+                    {{ form.title }}
+                    <br>
                     <br>
                     {{ form.feedback }}
                     <hr>
-                    <div class="stars-con">
-                        <div>
-                            <br>
-                            <label>Mentorship</label>
-                            <br>
+                    <div class="stars-box">
+                        <div class="stars-con">
+                            <div>
+                                <br>
+                                <label>Mentorship</label>
+                                <br>
+                            </div>
+                            {% for radio in form.mentorship %}
+                                <label for="{{ radio.id_for_label }}" class="formStars">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span class="radio">{{ radio.tag }}</span>
+                                </label>
+                            {% endfor %}
                         </div>
-                        {% for radio in form.mentorship %}
-                            <label for="{{ radio.id_for_label }}" class="formStars">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span class="radio">{{ radio.tag }}</span>
-                            </label>
-                        {% endfor %}
-                    </div>
-                    <div class="stars-con">
-                        <div>
-                            <br>
-                            <label>Hiring</label>
-                            <br>
+                        <div class="stars-con">
+                            <div>
+                                <br>
+                                <label>Hiring</label>
+                                <br>
+                            </div>
+                            {% for radio in form.hiring %}
+                                <label for="{{ radio.id_for_label }}" class="formStars">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span class="radio">{{ radio.tag }}</span>
+                                </label>
+                            {% endfor %}
                         </div>
-                        {% for radio in form.hiring %}
-                            <label for="{{ radio.id_for_label }}" class="formStars">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span class="radio">{{ radio.tag }}</span>
-                            </label>
-                        {% endfor %}
-                    </div>
-                    <div class="stars-con">
-                        <div>
-                            <br>
-                            <label>Community</label>
-                            <br>
+                        <div class="stars-con">
+                            <div>
+                                <br>
+                                <label>Community</label>
+                                <br>
+                            </div>
+                            {% for radio in form.community %}
+                                <label for="{{ radio.id_for_label }}" class="formStars">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span class="radio">{{ radio.tag }}</span>
+                                </label>
+                            {% endfor %}
                         </div>
-                        {% for radio in form.community %}
-                            <label for="{{ radio.id_for_label }}" class="formStars">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span class="radio">{{ radio.tag }}</span>
-                            </label>
-                        {% endfor %}
-                    </div>
-                    <div class="stars-con">
-                        <div>
-                            <br>
-                            <label>Fundraising</label>
-                            <br>
+                        <div class="stars-con">
+                            <div>
+                                <br>
+                                <label>Fundraising</label>
+                                <br>
+                            </div>
+                            {% for radio in form.fundraising %}
+                                <label for="{{ radio.id_for_label }}" class="formStars">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span class="radio">{{ radio.tag }}</span>
+                                </label>
+                            {% endfor %}
                         </div>
-                        {% for radio in form.fundraising %}
-                            <label for="{{ radio.id_for_label }}" class="formStars">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span class="radio">{{ radio.tag }}</span>
-                            </label>
-                        {% endfor %}
-                    </div>
-                    <div class="stars-con">
-                        <div>
-                            <br>
-                            <label>Corporate Development</label>
-                            <br>
+                        <div class="stars-con">
+                            <div>
+                                <br>
+                                <label>Corporate Development</label>
+                                <br>
+                            </div>
+                            {% for radio in form.corporate_dev %}
+                                <label for="{{ radio.id_for_label }}" class="formStars">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span class="radio">{{ radio.tag }}</span>
+                                </label>
+                            {% endfor %}
                         </div>
-                        {% for radio in form.corporate_dev %}
-                            <label for="{{ radio.id_for_label }}" class="formStars">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span class="radio">{{ radio.tag }}</span>
-                            </label>
-                        {% endfor %}
+                        <br>
+                        <br>
                     </div>
                 </fieldset>
-                <button class="btn" id="submit" type="submit">Post Review</button>
+                <div class="wrapper">
+                    <button class="btn" id="submit" type="submit">Post Review</button>
+                </div>
             </form>
         </div>
     </div>

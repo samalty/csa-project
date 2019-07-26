@@ -5,8 +5,8 @@
     {% if reviews %}
         {% for review in reviews %}
             <div class="acc-reviews">
-                <h4><b><a href="{% url 'review_detail' review.id %}">Review Title</a></b></h4>
-                <p><a href="{% url 'review_detail' review.id %}">{{ review.subject }}</a></p>
+                <h4><b><a href="{% url 'review_detail' review.pk %}">{{ review.title }}</a></b></h4>
+                <p>{{ review.subject }}</p>
                 <div class="emptyStarsSmall">
                     <i class="fa fa-star" id="emptyStarSmall1"></i>                        
                     <i class="fa fa-star" id="emptyStarSmall2"></i>
@@ -31,7 +31,7 @@
                 <br>
                 <p class="date-author">({{ review.overall }} out of 5)</p>
                 <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
-                <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.id %}">Read more</a></p>
+                <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.pk %}">Read more</a></p>
             </div>
         {% endfor %}
     {% else %}

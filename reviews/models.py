@@ -1,8 +1,8 @@
 from django.db import models
-from django.db.models import Avg
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
+from django.db.models import Avg
 
 class Accelerator(models.Model):
     name = models.CharField(max_length=100)
@@ -65,8 +65,6 @@ class Accelerator(models.Model):
         corporate_result = Review.objects.filter(subject=self).aggregate(avg_corporate=Avg('corporate_dev'))['avg_corporate']
         return corporate_result if len(quantity) > 0 else 0
 
-    # self.review_set.aggregate(avg_rating=Avg('overall')).avg_rating
-
 class Review(models.Model):
     RATINGS = (
         ('1', '1'),
@@ -76,6 +74,7 @@ class Review(models.Model):
         ('5', '5'),
     )
     subject = models.ForeignKey(Accelerator, on_delete=models.CASCADE, blank=False)
+    title = models.CharField(max_length=200, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     feedback = models.TextField(blank=False)
     date_posted = models.DateTimeField(default=timezone.now)

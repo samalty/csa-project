@@ -3,7 +3,8 @@
 {% block content %}
     <div class="container">
         <div class="review-main">
-            <h2><b>Review title</b></h2>
+            <h2><b>{{ review.title }}</b></h2>
+            <br>
             <div class="emptyStarsSmall">
                 <i class="fa fa-star" id="emptyStarSmall1"></i>                        
                 <i class="fa fa-star" id="emptyStarSmall2"></i>
@@ -27,8 +28,8 @@
             </div>
             <br>
             <p class="date-author">({{ review.overall|floatformat:2 }} out of 5)</p>
-            <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
-            <p>{{ review.subject }}</p>
+            <p class="date-author">{{ review.date_posted }}</p>
+            <p class="date-author">Review of {{ review.subject }} by {{ review.author }}</p>
             <hr>
             <p>{{ review.feedback }}</p>
         </div>
@@ -121,8 +122,8 @@
         </div>
         <div class="review-buttons">
             {% if review.author == user %}
-                <a class="btn btn-secondary btn-sm" href="#">Update</a>
-                <a class="btn btn-danger btn-sm" href="#">Delete</a>
+                <a class="btn" id="update" href="{% url 'review_edit' review.pk %}">Update Review</a>
+                <a class="btn" id="delete" href="{% url 'review_delete' review.pk %}">Delete Review</a>
             {% endif %}
         </div>
     </div>

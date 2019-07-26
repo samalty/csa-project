@@ -49,22 +49,14 @@
                   <a class="nav-item nav-link" href="{% url 'accelerators' %}">Companies</a>
                 </li>
               {% endif %}
-              {% if user.is_authenticated %}
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reviews
-                  <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-link" href="{% url 'reviews' %}">Read Reviews</a></li>
-                    <li><a class="dropdown-link" href="{% url 'review_create' %}">Add Review</a></li>
-                  </ul>
+                <li class="nav-item">
+                  <a class="nav-item nav-link" href="{% url 'reviews' %}">Latest Reviews</a>
                 </li>
+              {% if user.is_authenticated %}
                 <li class="nav-item">
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
                 </li>
               {% else %}
-                <li class="nav-item">
-                  <a class="nav-item nav-link" href="{% url 'reviews' %}">Read Reviews</a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
                 </li>

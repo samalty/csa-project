@@ -4,7 +4,7 @@
     <div class="container">
     {% if accelerators %}
         {% for accelerator in accelerators %}
-            <a href="{% url 'accelerator_detail' accelerator.id %}">
+            <a href="{% url 'accelerator_detail' accelerator.pk %}">
                 <div class="acc-container"> 
                     <h4><b>{{ accelerator.name }}</b></h4>
                     <div class="emptyStarsHome">

@@ -250,16 +250,21 @@ h1,h2,h3,h4,h5,p,
 .dropdown-toggle,
 .navbar-brand,
 legend,
-label{
+label,
+.btn{
     color: #000000;
     font-family: 'Roboto Slab', serif;
-    /*font-family: 'Exo 2', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     font-family: 'Barlow Condensed', sans-serif;
     font-family: 'Ropa Sans', sans-serif;
-    font-family: 'Archivo', sans-serif;*/
+    /*font-family: 'Archivo', sans-serif;*/
 }
 
 p{
+    font-size: 18px;
+}
+
+.blue-text{
     font-size: 16px;
 }
 
@@ -291,33 +296,33 @@ p{
 }
 
 .btn{
-    border: 1px solid #d3d3d3;
-    color: #ffffff;
+    border: 3px solid #003366;
+    color: #003366;
+    background-color: #ffffff;
     margin: 10px 5px;
     padding: 10px;
     border-radius: 0px;
 }
 
-.btn:hover{
-    color: #ffffff;
-}
-
 #update{
-    background-image: linear-gradient(to bottom, #ffcc00, #cca300);
+    background-color: #ffd11a;
+    border-radius: 20px;
 }
 
 #delete{
-    background-image: linear-gradient(to bottom, #e60000, #b30000);
+    background-color: #ff3333;
+    border-radius: 20px;
 }
 
 #review,
-#view{
-    background-image: linear-gradient(to bottom, #004d99, #003366);
+#view,
+#submit{
+    border-radius: 20px;
 }
 
-#submit{
-    background-image: linear-gradient(to bottom, #00cc00, #009900);
-    margin: auto;
+.wrapper{
+    width: 100%;
+    text-align: center;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Images >>>>>>>>>>>>>>>>>>>> */
@@ -435,6 +440,12 @@ footer{
     transform: scale(1.7);
 }
 
+.stars-box{
+    width: 100%;
+    height: auto;
+    background-color: #f2f2f2;
+}
+
 .stars-con{
     margin: 0px;
     padding: 0px;
@@ -450,4 +461,11 @@ footer{
     cursor: pointer;
     color: #e6e6e6;
     position: relative;
+}
+
+
+/* <<<<<<<<<<<<<<<<<<<< Messages >>>>>>>>>>>>>>>>>>>> */
+
+.alert{
+    z-index: 10000;
 }

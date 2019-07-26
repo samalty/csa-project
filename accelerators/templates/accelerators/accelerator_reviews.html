@@ -7,7 +7,7 @@
                 <h2><b>Reviews for {{ accelerator.name }}</b></h2>
                 <br>
                 {% for review in reviews %}
-                    <h4><b><a href="{% url 'review_detail' review.id %}">Review Title</a></b></h4>
+                    <h4><b><a href="{% url 'review_detail' review.pk %}">{{ review.title }}</a></b></h4>
                     <div class="emptyStarsSmall">
                         <i class="fa fa-star" id="emptyStarSmall1"></i>                        
                         <i class="fa fa-star" id="emptyStarSmall2"></i>
@@ -31,11 +31,12 @@
                     </div>
                     <br>
                     <p class="date-author"><i>{{ review.date_posted }}</i> | <i>{{ review.author }}</i></p>
-                    <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.id %}">Read more</a></p>
+                    <p class="blog-text">{{ review.feedback|truncatewords:30 }} <a href="{% url 'review_detail' review.pk %}">Read more</a></p>
+                    <hr>
                 {% endfor %}
             {% else %}
                 <div class="empty-page">
-                    <p>Sorry. No reviews have yet been posted for this company.</p>
+                    <p>Sorry. No reviews have yet been posted for {{ accelerator.name }}.</p>
                     <p>Be the first to post a review by clicking the relevant tab, above.</p>
                 </div>
             {% endif %}
