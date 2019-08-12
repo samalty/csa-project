@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse
 from .forms import UserRegisterForm
+from reviews.models import Review
 
 def index(request):
-    return render(request, 'accounts/index.html')
+    reviews = Review.objects.all().order_by('-date_posted')[:4]
+    context = {
+        'reviews': reviews,
+    }
+    return render(request, 'accounts/index.html', context)
 
 def register(request):
     if request.method == 'POST':

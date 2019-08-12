@@ -2,7 +2,61 @@
 {% block page_title %}Acceler8{% endblock %}
 {% block content %}
     <div class="container">
-        <h1>Header</h1>
-        <h3>Subhead</h3>
+        <div class="banner-header">
+            <img src="../media/acceler8_1.jpg" id="acc-banner-img">
+            <div class="header-container">
+                <h1><b>Startup reviews so you can make the right move</b></h1>
+                <br>
+                <br>
+                <h5><b>Read reviews. Write reviews. Find startup accelerators.</b></h5>
+            </div>
+        </div>
+        <div class="recent-reviews">
+            {% if reviews %}
+                <h4><b>Recent Reviews</b></h4>
+                {% for review in reviews %}
+                <a href="{% url 'review_detail' review.pk %}">
+                    <div class="review-box">
+                        <div class="emptyStarsMini">
+                            <i class="fa fa-star" id="emptyStarMini1"></i>                        
+                            <i class="fa fa-star" id="emptyStarMini2"></i>
+                            <i class="fa fa-star" id="emptyStarMini3"></i>
+                            <i class="fa fa-star" id="emptyStarMini4"></i>
+                            <i class="fa fa-star" id="emptyStarMini5"></i>
+                        </div>
+                        <div class="halfStarsMini">
+                            <i class="fas fa-star-half" id="halfStarMini1"></i>
+                            <i class="fas fa-star-half" {% if review.overall < 1.25 %} style="display:none;" {% endif %} id="halfStarMini2"></i>
+                            <i class="fas fa-star-half" {% if review.overall < 2.25 %} style="display:none;" {% endif %} id="halfStarMini3"></i>
+                            <i class="fas fa-star-half" {% if review.overall < 3.25 %} style="display:none;" {% endif %} id="halfStarMini4"></i>
+                            <i class="fas fa-star-half" {% if review.overall < 4.25 %} style="display:none;" {% endif %} id="halfStarMini5"></i>
+                        </div>
+                        <div class="fullStarsMini">
+                            <i class="fa fa-star" id="fullStarMini1"></i>                            
+                            <i class="fa fa-star" {% if review.overall < 1.75 %} style="display:none;" {% endif %} id="fullStarMini2"></i>
+                            <i class="fa fa-star" {% if review.overall < 2.75 %} style="display:none;" {% endif %} id="fullStarMini3"></i>
+                            <i class="fa fa-star" {% if review.overall < 3.75 %} style="display:none;" {% endif %} id="fullStarMini4"></i>
+                            <i class="fa fa-star" {% if review.overall < 4.75 %} style="display:none;" {% endif %} id="fullStarMini5"></i>
+                        </div>
+                        <p class="review-title"><b><i>"{{ review.title }}"</i></b></p>
+                        <p class="review-author"><b>{{ review.author }} reviewed {{ review.subject }}</b></p>
+                    </div>
+                </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mission">
+            <div class="mission-text">
+                <h4><b>Our Mission</b></h4>
+                <br>
+                <p><b>Our mission is to bring transparency to the world of startups. Acceler8 is a review platform open to everyone. Share your 
+                    experiences to help others make better choices, and help the startup world up its game.</b></p>
+                <p><b>We've launched by focusing on startup accelerators. They claim to turbo-charge your company and help you to secure your 
+                    first big round of funding. But is it worth it?</b></p>
+            </div>
+            <div class="mission-img">
+                <img src="../media/acceler8_2.jpg" id="acc-mission-img">
+            </div>
+        </div>
     </div>
 {% endblock %}

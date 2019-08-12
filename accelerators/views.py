@@ -14,7 +14,7 @@ class AcceleratorListView(ListView):
 
 def accelerator_detail(request, pk):
     accelerator = get_object_or_404(Accelerator, pk=pk)
-    reviews = Review.objects.filter(subject=accelerator).order_by('-date_posted')[:3]
+    reviews = Review.objects.filter(subject=accelerator).order_by('-date_posted')[:4]
     context = {
         'accelerator': accelerator,
         'reviews': reviews,
