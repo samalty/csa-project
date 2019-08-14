@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block page_title %}Register{% endblock %}
 {% block content %}
-    <div class="container">
+    <img src="../media/acceler8_3.jpg" id="login-banner-img">
         <div class="login-form-squeeze">
             <form method="POST" class="login-form">
                 {% csrf_token %}
@@ -12,9 +12,8 @@
                 </fieldset>
                 <button class="btn" id="submit" type="submit">Sign Up</button>
             </form>
-            <div>
+            <div class="login-link">
                 <p>Already have an account? <a href="{% url 'login' %}">Sign in here.</a></p>
             </div>
         </div>
-    </div>
 {% endblock %}

@@ -2,19 +2,18 @@
 {% load crispy_forms_tags %}
 {% block page_title %}Log In{% endblock %}
 {% block content %}
-    <div class="container">
+    <img src="../media/acceler8_1.jpg" id="login-banner-img">
         <div class="login-form-squeeze">
             <form method="POST" class="login-form">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend>Log In</legend>
+                    <legend><b>Log In</b></legend>
                     {{ form|crispy }}
                 </fieldset>
                 <button class="btn" id="submit" type="submit">Log In</button>
             </form>
-            <div>
+            <div class="reg-link">
                 <p>Not a registered user? <a href="{% url 'register' %}">Create an account here.</a></p>
             </div>
         </div>
-    </div>
 {% endblock %}

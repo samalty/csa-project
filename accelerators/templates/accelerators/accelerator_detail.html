@@ -7,7 +7,7 @@
                 <img class="acc-logo-detail" src="{{ accelerator.logo.url }}">
             </div>
             <div class="acc-header-inner-lg">
-                <h1><b>{{ accelerator.name }}</b></h1>
+                <h2><b>{{ accelerator.name }}</b></h2>
                 <div class="emptyStars">
                     <i class="fa fa-star" id="emptyStar1"></i>                        
                     <i class="fa fa-star" id="emptyStar2"></i>
@@ -51,17 +51,9 @@
             <canvas id="accRatings"></canvas>
         </div>
         <hr>
-        <div class="options">
-            {% if accelerator.author == user %}
-                <a class="btn" id="update" href="{% url 'accelerator_update' accelerator.pk %}">Update Company</a>
-                <a class="btn" id="delete" href="{% url 'accelerator_delete' accelerator.pk %}">Delete Company</a>
-            {% endif %}
-            <a class="btn" id="review" href="{% url 'review_post' accelerator.pk %}">Leave A Review</a>
-            <a class="btn" id="view" href="{% url 'accelerator_reviews' accelerator.pk %}">See All Reviews For {{ accelerator.name }}</a>
-        </div>
         <div class="acc-reviews">
             {% if reviews %}
-                <h4><b>Recent reviews for {{ accelerator.name }}</b></h4>
+                <h4 style="text-align:center"><b>Recent reviews for {{ accelerator.name }}</b></h4>
                 <br>
                 {% for review in reviews %}
                 <a href="{% url 'review_detail' review.pk %}">
@@ -96,6 +88,15 @@
                 <p style="text-align:center">Sorry. No reviews have yet been posted for this company.</p>
                 <p style="text-align:center">Be the first to post a review by clicking the relevant tab, above.</p>
             {% endif %}
+        </div>
+        <div class="options">
+            {% if accelerator.author == user %}
+                <a class="btn" id="update" href="{% url 'accelerator_update' accelerator.pk %}">Update Company</a>
+                <a class="btn" id="delete" href="{% url 'accelerator_delete' accelerator.pk %}">Delete Company</a>
+            {% endif %}
+            <a class="btn" id="review" href="{% url 'review_post' accelerator.pk %}">Leave A Review  <i class="fas fa-pencil-alt" style="font-size:18px;"></i></a>
+            <a class="btn" id="view" href="{% url 'accelerator_reviews' accelerator.pk %}">{{ accelerator.name }} Reviews  <i class="far fa-comment" style="font-size:18px;"></i></a>
+            <br>
         </div>
     </div>
     <script>

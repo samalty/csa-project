@@ -72,6 +72,7 @@ body{
     position: relative;
     min-height: 100%;
     padding-bottom: 100px;
+    text-align: center;
 }
 
 .background{
@@ -193,11 +194,43 @@ body{
 /* <<<<<<<<<<<<<<<<<<<< Register & Login Form Pages >>>>>>>>>>>>>>>>>>>> */
 
 .login-form{
-    background-image: linear-gradient(to right, #e6e6ff, #ffffff);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
     opacity: 0.9;
-    border: 3px solid #003366;
-    border-radius: 2%;
+    background-color: #ffffff;
+    border-top: 3px solid #cbab82;
+    border-left: 3px solid #cbab82;
+    border-bottom: 3px solid #e7717d;
+    border-right: 3px solid #e7717d;
     padding: 15px;
+    text-align: left;
+    width: 400px;
+}
+
+#submit{
+    float: right;
+}
+
+.reg-link{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, +330%);
+}
+
+.login-link{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, +600%);
+}
+
+#login-banner-img{
+    text-align: center;
+    width: 100%;
+    opacity: 0.3;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Accelerator Form Page >>>>>>>>>>>>>>>>>>>> */
@@ -238,7 +271,7 @@ body{
 .halfStarsHome{
     position: absolute;
     width: 245px;
-    padding-left: 30px;
+    padding-left: 37px;
     text-align: left;
     height: auto;
     margin-top: 0px;
@@ -305,6 +338,17 @@ body{
 
 .acc-ratings{
     padding: 20px 50px;
+}
+
+/* <<<<<<<<<<<<<<<<<<<< Review Home Page >>>>>>>>>>>>>>>>>>>> */
+
+.review-container{
+    border-top: 1px solid #cbab82;
+    border-bottom: 1px solid #e7717d;
+    padding: 20px 40px;
+    max-width: 700px;
+    margin: 20px;
+    text-align: left;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Review Detail Page >>>>>>>>>>>>>>>>>>>> */
@@ -391,6 +435,11 @@ p{
     margin-bottom: 150px;
 }
 
+.blog-text{
+    float: left;
+    color: #000000;
+}
+
 /* <<<<<<<<<<<<<<<<<<<< Buttons >>>>>>>>>>>>>>>>>>>> */
 
 .options{
@@ -398,12 +447,61 @@ p{
 }
 
 .btn{
-    border: 3px solid #003366;
+    border: 3px solid #e7717d;
     color: #003366;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
     margin: 10px 5px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+#review,
+#view{
+    margin: 40px 5px;;
+}
+
+.btn:hover{
+    background-color: #e7717d;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+#company-index{
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #cbab82, #e7717d);
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 20px;
     padding: 10px;
-    border-radius: 0px;
+    width: 340px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+  
+#company-index span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+#company-index span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+#company-index:hover span {
+    padding-right: 25px;
+}
+  
+#company-index:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 #update{
@@ -416,15 +514,13 @@ p{
     border-radius: 20px;
 }
 
-#review,
-#view,
-#submit{
-    border-radius: 20px;
-}
-
 .wrapper{
     width: 100%;
     text-align: center;
+}
+
+#read-more{
+    float: right;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Images >>>>>>>>>>>>>>>>>>>> */
@@ -446,7 +542,7 @@ p{
 .halfStars{
     position: absolute;
     padding: 10px;
-    padding-left: 55px;
+    padding-left: 75px;
     width: 390px;
     height: auto;
     text-align: left;
@@ -467,7 +563,7 @@ p{
 #halfStar4,
 #halfStar5{
     font-size: 45px;
-    color: #ffd11a;
+    color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 #fullStar1,
@@ -476,7 +572,7 @@ p{
 #fullStar4,
 #fullStar5{
     font-size: 45px;
-    color: #ffd11a;
+    color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 
@@ -485,8 +581,6 @@ p{
 .halfStarsSmall{
     position: absolute;
     width: 190px;
-    margin-top: 30px;
-    text-align: center;
     height: auto;
     margin-top: 0px;
     text-align: left;
@@ -507,7 +601,7 @@ p{
 #halfStarSmall4,
 #halfStarSmall5{
     font-size: 30px;
-    color: #ffd11a;
+    color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 #fullStarSmall1,
@@ -516,7 +610,7 @@ p{
 #fullStarSmall4,
 #fullStarSmall5{
     font-size: 30px;
-    color: #ffd11a;
+    color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 
@@ -545,7 +639,7 @@ p{
 #halfStarMini4,
 #halfStarMini5{
     font-size: 20px;
-    color: #ffd11a;
+    color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 #fullStarMini1,
@@ -554,7 +648,7 @@ p{
 #fullStarMini4,
 #fullStarMini5{
     font-size: 20px;
-    color: #ffd11a;
+    color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 
@@ -565,9 +659,13 @@ p{
 /* <<<<<<<<<<<<<<<<<<<< Footer >>>>>>>>>>>>>>>>>>>> */
 
 footer{
+    box-sizing: border-box;
     width: 100%;
     height: 100px;
-    background-color: #333333;
+    background-image: linear-gradient(to right, #cbab82, #e7717d);
+    border-top: 3px solid #ffffff;
+    padding-top: 10px;
+    text-align: center;
     position: absolute;
     bottom: 0;
 }
