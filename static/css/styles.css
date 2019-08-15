@@ -16,8 +16,12 @@
     color: #ffffff;
 }
 
-.dropdown{
+.navbar-nav li a{
     color: #ffffff;
+}
+
+.dropdown{
+    color: #e7717d;
     padding: 7px;
     margin-top: 7px;
 }
@@ -27,7 +31,8 @@
 }
 
 .dropdown-menu{
-    margin-top: -0.5px;
+    background-color: #e7717d;
+    margin-top: -0.2px;
     border: 3px solid #ffffff;
     border-top: none;
     border-top-right-radius: 0%;
@@ -89,7 +94,7 @@ body{
 /* <<<<<<<<<<<<<<<<<<<< Index Page >>>>>>>>>>>>>>>>>>>> */
 
 .banner-header{
-    width: 100%;
+    /*width: 100%;*/
     margin: 0;
     margin-top: -30px;
     position: relative;
@@ -111,22 +116,29 @@ body{
     min-width: 300px;
 }
 
+.reviews-title{
+    text-align: center;
+    padding-top: 40px;
+}
+
 .recent-reviews{
     margin-top: 20px;
-    padding: 40px 0px;
-    text-align: center;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .review-box{
     box-sizing: border-box;
     background-color: #f2f2f2;
     width: 200px;
-    height: 150px;
+    height: 170px;
     box-shadow: 3px 3px 8px #888888;
     margin: 19px;
-    display: inline-block;
     padding: 20px;
     cursor: pointer;
+    display: inline-block;
 }
 
 .review-box:hover{
@@ -332,8 +344,9 @@ body{
     width: 100%;
     padding: 20px 0px;
     height: auto;
-    display: inline-block;
-    border-bottom: 1px solid #e6e6e6
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .acc-ratings{
@@ -343,12 +356,18 @@ body{
 /* <<<<<<<<<<<<<<<<<<<< Review Home Page >>>>>>>>>>>>>>>>>>>> */
 
 .review-container{
+    display: inline-block;
     border-top: 1px solid #cbab82;
-    border-bottom: 1px solid #e7717d;
     padding: 20px 40px;
-    max-width: 700px;
+    width: 700px;
+    min-width: 350px;
     margin: 20px;
     text-align: left;
+}
+
+#read-more{
+    float: right;
+    margin-top: 0;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Review Detail Page >>>>>>>>>>>>>>>>>>>> */
@@ -444,10 +463,11 @@ p{
 
 .options{
     text-align: center;
+    margin: 0px;
 }
 
 .btn{
-    border: 3px solid #e7717d;
+    border: 3px solid #003366;
     color: #003366;
     background-color: #f2f2f2;
     margin: 10px 5px;
@@ -461,8 +481,17 @@ p{
 }
 
 .btn:hover{
-    background-color: #e7717d;
+    background-color: #003366;
     color: #ffffff;
+    transition: 0.5s;
+}
+
+#submit{
+    border: 3px solid #e7717d;
+}
+
+#submit:hover{
+    background-color: #e7717d;
     transition: 0.5s;
 }
 
@@ -504,23 +533,9 @@ p{
     right: 0;
 }
 
-#update{
-    background-color: #ffd11a;
-    border-radius: 20px;
-}
-
-#delete{
-    background-color: #ff3333;
-    border-radius: 20px;
-}
-
 .wrapper{
     width: 100%;
     text-align: center;
-}
-
-#read-more{
-    float: right;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Images >>>>>>>>>>>>>>>>>>>> */
@@ -670,8 +685,11 @@ footer{
     bottom: 0;
 }
 
+.footer-text{
+    color: #ffffff;
+}
 
-/* <<<<<<<<<<<<<<<<<<<< Form Stars >>>>>>>>>>>>>>>>>>>> */
+/* <<<<<<<<<<<<<<<<<<<< Review Form >>>>>>>>>>>>>>>>>>>> */
 
 .radio{
     display: none;
@@ -699,6 +717,10 @@ footer{
     cursor: pointer;
     color: #e6e6e6;
     position: relative;
+}
+
+.wrapper{
+    margin-bottom: 100px;
 }
 
 

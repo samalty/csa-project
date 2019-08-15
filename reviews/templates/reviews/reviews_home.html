@@ -1,7 +1,7 @@
 {% extends 'accounts/base.html' %}
 {% block page_title %}Reviews{% endblock %}
 {% block content %}
-    <div class="container" style="text-align:center;">
+    <div class="container" style="text-align:center">
     {% if reviews %}
         {% for review in reviews %}
             <div class="review-container">
@@ -32,8 +32,6 @@
                 <p class="date-author"><i>{{ review.date_posted }}</i> | <i>Review of {{ review.subject }} by {{ review.author }}</i></p>
                 <hr>
                 <p class="blog-text">{{ review.feedback|truncatewords:30 }} </p>
-                <br>
-                <br>
                 <a class="btn" id="read-more" href="{% url 'review_detail' review.pk %}">Read more  <i class="fa fa-angle-double-right" style="font-size:18px;"></i></a>
             </div>
         {% endfor %}

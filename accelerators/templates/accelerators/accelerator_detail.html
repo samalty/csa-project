@@ -36,6 +36,14 @@
                 <p class="blue-text"><b>Website: </b><a href="{{ accelerator.website }}">{{ accelerator.website }}</a></p>
                 <hr>
                 <p class="blue-text"><b>Locations: </b>{{ accelerator.locations }}</p>
+                <hr>
+                <p class="blue-text"><b>Sector focus: </b>{{ accelerator.sector_focus }}</p>
+                <hr>
+                <p class="blue-text"><b>Stage: </b>{{ accelerator.stage }}</p>
+                <hr>
+                <p class="blue-text"><b>Deal: </b>{{ accelerator.deal }}</p>
+                <hr>
+                <p class="blue-text"><b>Duration: </b>{{ accelerator.duration }}</p>
             </div>
         </div>
         <div class="acc-bio">
@@ -46,15 +54,20 @@
             <p><b>Stage: </b>{{ accelerator.stage }}</p>
             <p><b>Deal: </b>{{ accelerator.deal }}</p>
             <p><b>Duration: </b>{{ accelerator.duration }}</p>
+            <div class="options">
+                <a class="btn" id="review" href="{% url 'review_post' accelerator.pk %}">Leave A Review  <i class="fas fa-pencil-alt" style="font-size:18px;"></i></a>
+                <a class="btn" id="view" href="{% url 'accelerator_reviews' accelerator.pk %}">{{ accelerator.name }} Reviews  <i class="far fa-comment" style="font-size:18px;"></i></a>
+            </div>
         </div>
         <div class="acc-ratings">
             <canvas id="accRatings"></canvas>
         </div>
         <hr>
+        <div class="reviews-title">
+            <h4 style="text-align:center"><b>Recent reviews for {{ accelerator.name }}</b></h4>
+        </div>
         <div class="acc-reviews">
             {% if reviews %}
-                <h4 style="text-align:center"><b>Recent reviews for {{ accelerator.name }}</b></h4>
-                <br>
                 {% for review in reviews %}
                 <a href="{% url 'review_detail' review.pk %}">
                     <div class="review-box">
@@ -85,17 +98,17 @@
                 </a>
                 {% endfor %}
             {% else %}
-                <p style="text-align:center">Sorry. No reviews have yet been posted for this company.</p>
+                <p style="text-align:center">No reviews have yet been posted for this company.</p>
                 <p style="text-align:center">Be the first to post a review by clicking the relevant tab, above.</p>
             {% endif %}
         </div>
         <div class="options">
             {% if accelerator.author == user %}
+                <br>
                 <a class="btn" id="update" href="{% url 'accelerator_update' accelerator.pk %}">Update Company</a>
                 <a class="btn" id="delete" href="{% url 'accelerator_delete' accelerator.pk %}">Delete Company</a>
+                <br>
             {% endif %}
-            <a class="btn" id="review" href="{% url 'review_post' accelerator.pk %}">Leave A Review  <i class="fas fa-pencil-alt" style="font-size:18px;"></i></a>
-            <a class="btn" id="view" href="{% url 'accelerator_reviews' accelerator.pk %}">{{ accelerator.name }} Reviews  <i class="far fa-comment" style="font-size:18px;"></i></a>
             <br>
         </div>
     </div>

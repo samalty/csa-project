@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <div class="banner-header">
-            <img src="../media/acceler8_1.jpg" id="acc-banner-img">
+            <img src="../static/img/acceler8_1.jpg" id="acc-banner-img">
             <div class="header-container">
                 <h1><b>Startup reviews so you can make the right move</b></h1>
                 <br>
@@ -13,9 +13,11 @@
                 <a class="btn" id="company-index" href="{% url 'accelerators' %}"><span>Search Startup Accelerators </span></a>
             </div>
         </div>
+        <div class="reviews-title">
+            <h4><b>Recent Reviews</b></h4>
+        </div>
         <div class="recent-reviews">
             {% if reviews %}
-                <h4><b>Recent Reviews</b></h4>
                 {% for review in reviews %}
                 <a href="{% url 'review_detail' review.pk %}">
                     <div class="review-box">
@@ -57,7 +59,7 @@
                     first big round of funding. But is it worth it?</b></p>
             </div>
             <div class="mission-img">
-                <img src="../media/acceler8_2.jpg" id="acc-mission-img">
+                <img src="../static/img/acceler8_2.jpg" id="acc-mission-img">
             </div>
         </div>
     </div>
