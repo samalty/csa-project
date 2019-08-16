@@ -122,11 +122,13 @@ body{
 }
 
 .recent-reviews{
+    box-sizing: border-box;
     margin-top: 20px;
     padding-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 1000px;
 }
 
 .review-box{
@@ -138,7 +140,6 @@ body{
     margin: 19px;
     padding: 20px;
     cursor: pointer;
-    display: inline-block;
 }
 
 .review-box:hover{
@@ -633,7 +634,7 @@ p{
 .fullStarsMini,
 .halfStarsMini{
     position: absolute;
-    width: 100%;
+    width: 160px;
     height: auto;
     text-align: left;
     padding-left: 15px;
