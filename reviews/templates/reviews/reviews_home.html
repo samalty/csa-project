@@ -2,6 +2,13 @@
 {% block page_title %}Reviews{% endblock %}
 {% block content %}
     <div class="container" style="text-align:center">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
     {% if reviews %}
         {% for review in reviews %}
             <div class="review-container">
@@ -41,5 +48,6 @@
             <p>Be the first to post a review by clicking the relevant tab, above.</p>
         </div>
     {% endif %}
+    <button id="scrollTop"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
     </div>
 {% endblock %}

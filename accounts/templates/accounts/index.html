@@ -19,7 +19,7 @@
         <div class="recent-reviews">
             {% if reviews %}
                 {% for review in reviews %}
-                <a href="{% url 'review_detail' review.pk %}">
+                <a href="{% url 'review_detail' review.pk %}" style="text-decoration:none;">
                     <div class="review-box">
                         <div class="emptyStarsMini">
                             <i class="fa fa-star" id="emptyStarMini1"></i>                        

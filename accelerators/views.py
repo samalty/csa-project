@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
 from django.core import serializers
 from django.contrib import messages
 from reviews.models import Accelerator, Review
@@ -58,7 +58,7 @@ class AcceleratorUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 class AcceleratorDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Accelerator
     template_name = 'accelerators/accelerator_confirm_delete.html'
-    success_url = "/"
+    success_url = "/accelerators/"
     
     def test_func(self):
         accelerator = self.get_object()

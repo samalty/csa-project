@@ -2,7 +2,15 @@
 {% load crispy_forms_tags %}
 {% block page_title %}Log In{% endblock %}
 {% block content %}
-    <img src="../media/acceler8_1.jpg" id="login-banner-img">
+    {% if messages %}
+        {% for message in messages %}
+            <br>
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <img src="../static/img/acceler8_1.jpg" id="login-banner-img">
         <div class="login-form-squeeze">
             <form method="POST" class="login-form">
                 {% csrf_token %}

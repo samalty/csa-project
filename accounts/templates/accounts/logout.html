@@ -1,10 +1,9 @@
 {% extends 'accounts/base.html' %}
 {% block page_title %}Register{% endblock %}
 {% block content %}
-    <div class="container">
-        <h2>Thanks for visiting. see you again soon.</h2>
-        <div>
-            <p><a href="{% url 'login' %}">Log in again.</a></p>
-        </div>
+    <img src="../static/img/acceler8_1.jpg" id="login-banner-img">
+    <h3 class="logout-message">Thanks for visiting. See you again soon.</h3>
+    <div class="login-again">
+        <p><a href="{% url 'login' %}">Log in again.</a></p>
     </div>
 {% endblock %}

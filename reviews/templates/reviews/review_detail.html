@@ -2,6 +2,13 @@
 {% block page_title %}{{ review.subject }}{% endblock %}
 {% block content %}
     <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" style="text-align:center;">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
         <div class="review-main">
             <h3><b>{{ review.title }}</b></h3>
             <div class="emptyStarsSmall">

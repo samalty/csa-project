@@ -20,43 +20,6 @@
     color: #ffffff;
 }
 
-.dropdown{
-    color: #e7717d;
-    padding: 7px;
-    margin-top: 7px;
-}
-
-.dropdown-toggle{
-    color: #ffffff;
-}
-
-.dropdown-menu{
-    background-color: #e7717d;
-    margin-top: -0.2px;
-    border: 3px solid #ffffff;
-    border-top: none;
-    border-top-right-radius: 0%;
-    border-top-left-radius: 0%;
-    padding: 5px;
-}
-
-.dropdown-link{
-    color: #ffffff;
-    margin: 5px;
-}
-
-.dropdown-link:hover{
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.navbar-brand:hover,
-.nav-item:hover,
-.dropdown-toggle:hover{
-    color: #ffffff;
-    text-decoration: none;
-}
-
 .material-icons{
     color: #ffffff;
     font-size: 40px;
@@ -83,6 +46,7 @@ body{
 .background{
     width: 100%;
     height: auto;
+    padding-top: 55px;
 }
 
 .container{
@@ -94,7 +58,7 @@ body{
 /* <<<<<<<<<<<<<<<<<<<< Index Page >>>>>>>>>>>>>>>>>>>> */
 
 .banner-header{
-    /*width: 100%;*/
+    width: 100%;
     margin: 0;
     margin-top: -30px;
     position: relative;
@@ -145,6 +109,7 @@ body{
 .review-box:hover{
     background-color: #e6e6e6;
     transition: 0.5s;
+    text-decoration: none;
 }
 
 .review-title{
@@ -246,6 +211,20 @@ body{
     opacity: 0.3;
 }
 
+.logout-message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -250%);
+}
+
+.login-again{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* <<<<<<<<<<<<<<<<<<<< Accelerator Form Page >>>>>>>>>>>>>>>>>>>> */
 
 .form-squeeze{
@@ -298,19 +277,28 @@ body{
     display: flex;
 }
 
-.acc-header-inner-logo{
+.acc-header-left{
     box-sizing: border-box;
-    width: 30%;
-    padding: 10px;
+    width: 75%;
     display: inline-block;
 }
 
-.acc-header-inner-lg{
+.acc-header-inner-logo{
     box-sizing: border-box;
     width: 45%;
     padding: 10px;
     display: inline-block;
+    float: left;
+    padding-left: 20px;
+}
+
+.acc-header-inner-lg{
+    box-sizing: border-box;
+    width: 55%;
+    padding: 10px;
+    display: inline-block;
     text-align: center;
+    float: right;
 }
 
 .acc-header-inner-sm{
@@ -318,19 +306,18 @@ body{
     width: 25%;
     padding: 10px;
     display: inline-block;
-    background-color: #e6f2ff;
+    background-image: linear-gradient(to bottom, #e6f2ff, #ffffff);
 }
 
 .acc-bio{
     box-sizing: border-box;
     width: 100%;
     height: auto;
-    margin-top: 20px;
+    margin-top: 100px;
     padding: 20px;
-    background-image: linear-gradient(to bottom, #e6e6ff, #ffffff);
-    border-top: 1px solid #e6e6e6;
-    border-left: 1px solid #e6e6e6;
-    border-right: 1px solid #e6e6e6;
+    padding-top: 45px;
+    padding-bottom: 0px;
+    display: block;
 }
 
 .acc-details{
@@ -352,6 +339,14 @@ body{
 
 .acc-ratings{
     padding: 20px 50px;
+}
+
+.acc-review-ratings{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 40px 20px;
+    border: 2px solid #e6e6ff;
 }
 
 /* <<<<<<<<<<<<<<<<<<<< Review Home Page >>>>>>>>>>>>>>>>>>>> */
@@ -539,6 +534,29 @@ p{
     text-align: center;
 }
 
+#scrollTop{
+    height: 40px;
+    width: 40px;
+    background-color: #e7717d;
+    color: #ffffff;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    border: 2px solid #cbab82;
+    border-radius: 15%;
+    font-size: 24px;
+    box-shadow: 3px 3px 8px #888888;
+    visibility: hidden;
+    transition: 0.5s;
+    z-index: 1000;
+}
+  
+#scrollTop.visible{
+    visibility: visible;
+    transition: 0.5s;
+}
+
 /* <<<<<<<<<<<<<<<<<<<< Images >>>>>>>>>>>>>>>>>>>> */
 
 .acc-logo-list{
@@ -558,7 +576,7 @@ p{
 .halfStars{
     position: absolute;
     padding: 10px;
-    padding-left: 75px;
+    padding-left: 55px;
     width: 390px;
     height: auto;
     text-align: left;
@@ -573,6 +591,7 @@ p{
     font-size: 45px;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
+
 #halfStar1,
 #halfStar2,
 #halfStar3,
@@ -582,6 +601,7 @@ p{
     color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
+
 #fullStar1,
 #fullStar2,
 #fullStar3,
@@ -611,6 +631,7 @@ p{
     font-size: 30px;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
+
 #halfStarSmall1,
 #halfStarSmall2,
 #halfStarSmall3,
@@ -620,6 +641,7 @@ p{
     color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
+
 #fullStarSmall1,
 #fullStarSmall2,
 #fullStarSmall3,
@@ -649,6 +671,7 @@ p{
     font-size: 20px;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
+
 #halfStarMini1,
 #halfStarMini2,
 #halfStarMini3,
@@ -658,6 +681,7 @@ p{
     color: #cbab82;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
+
 #fullStarMini1,
 #fullStarMini2,
 #fullStarMini3,
@@ -722,11 +746,4 @@ footer{
 
 .wrapper{
     margin-bottom: 100px;
-}
-
-
-/* <<<<<<<<<<<<<<<<<<<< Messages >>>>>>>>>>>>>>>>>>>> */
-
-.alert{
-    z-index: 10000;
 }
