@@ -13,12 +13,12 @@
                 <a class="btn" id="company-index" href="{% url 'accelerators' %}"><span>Search Startup Accelerators </span></a>
             </div>
         </div>
+        {% if reviews %}
         <div class="reviews-title">
             <h4><b>Recent Reviews</b></h4>
         </div>
         <div class="recent-reviews">
-            {% if reviews %}
-                {% for review in reviews %}
+            {% for review in reviews %}
                 <a href="{% url 'review_detail' review.pk %}" style="text-decoration:none;">
                     <div class="review-box">
                         <div class="emptyStarsMini">
@@ -46,9 +46,12 @@
                         <p class="review-author"><b>{{ review.author }} reviewed {{ review.subject }}</b></p>
                     </div>
                 </a>
-                {% endfor %}
-            {% endif %}
+            {% endfor %}
         </div>
+        {% else %}
+        <br>
+        <br>
+        {% endif %}
         <div class="mission">
             <div class="mission-text">
                 <h4><b>Our Mission</b></h4>
