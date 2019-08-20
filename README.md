@@ -10,7 +10,9 @@ access to the latest reviews for the company, while displaying the company's ave
 categories, as well as its overall score based on all user feedback provided. In addition to posting reviews, users can update and 
 remove reviews. The creation of company accounts, and any subsequent updates to said accounts, are limited to the administrator.
 
-This repository contains the source code used to create an MVP version of the Acceler8 site.
+This repository contains the source code used to create an MVP version of the Acceler8 site. The design of this site has not been 
+optimised for mobile devices. This is in part down to time restraints, but also as this application isn't considered one that you 
+would typically access on a mobile phone.
 
 ## Features
 
