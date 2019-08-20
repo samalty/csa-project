@@ -1,0 +1,1 @@
+web: gunicorn csa_project.wsgi
