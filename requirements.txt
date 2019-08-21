@@ -5,6 +5,7 @@ Django==2.2.2
 django-crispy-forms==1.7.2
 django-storages==1.7.1
 docutils==0.15.2
+env==0.1.0
 gunicorn==19.9.0
 jmespath==0.9.4
 Pillow==6.0.0
