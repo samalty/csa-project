@@ -38,32 +38,47 @@ class Accelerator(models.Model):
     @property
     def avg_mentorship(self):
         quantity = Review.objects.filter(subject=self)
-        mentorship_result = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg('mentorship'))['avg_mentorship']
-        return mentorship_result if len(quantity) > 0 else 0
+        if len(quantity) > 0:
+            mentorship_result = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg('mentorship'))['avg_mentorship']
+        else:
+            mentorship_result = 0
+        return mentorship_result
     
     @property
     def avg_hiring(self):
         quantity = Review.objects.filter(subject=self)
-        hiring_result = Review.objects.filter(subject=self).aggregate(avg_hiring=Avg('hiring'))['avg_hiring']
-        return hiring_result if len(quantity) > 0 else 0
+        if len(quantity) > 0:
+            hiring_result = Review.objects.filter(subject=self).aggregate(avg_hiring=Avg('hiring'))['avg_hiring']
+        else:
+            hiring_result = 0
+        return hiring_result
     
     @property
     def avg_community(self):
         quantity = Review.objects.filter(subject=self)
-        community_result = Review.objects.filter(subject=self).aggregate(avg_community=Avg('community'))['avg_community']
-        return community_result if len(quantity) > 0 else 0
+        if len(quantity) > 0:
+            community_result = Review.objects.filter(subject=self).aggregate(avg_community=Avg('community'))['avg_community']
+        else:
+            community_result = 0
+        return community_result
     
     @property
     def avg_fundraising(self):
         quantity = Review.objects.filter(subject=self)
-        fundraising_result = Review.objects.filter(subject=self).aggregate(avg_fundraising=Avg('fundraising'))['avg_fundraising']
-        return fundraising_result if len(quantity) > 0 else 0
+        if len(quantity) > 0:
+            fundraising_result = Review.objects.filter(subject=self).aggregate(avg_fundraising=Avg('fundraising'))['avg_fundraising']
+        else:
+            fundraising_result = 0
+        return fundraising_result
     
     @property
     def avg_corporate(self):
         quantity = Review.objects.filter(subject=self)
-        corporate_result = Review.objects.filter(subject=self).aggregate(avg_corporate=Avg('corporate_dev'))['avg_corporate']
-        return corporate_result if len(quantity) > 0 else 0
+        if len(quantity) > 0:
+            corporate_result = Review.objects.filter(subject=self).aggregate(avg_corporate=Avg('corporate'))['avg_corporate']
+        else:
+            corporate_result = 0
+        return corporate_result
 
 class Review(models.Model):
     RATINGS = (

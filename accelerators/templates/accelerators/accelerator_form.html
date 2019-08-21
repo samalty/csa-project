@@ -1,13 +1,13 @@
 {% extends 'accounts/base.html' %}
 {% load crispy_forms_tags %}
-{% block page_title %}Add A New Accelerator{% endblock %}
+{% block page_title %}Add A New Company{% endblock %}
 {% block content %}
     <div class="container">
         <div class="form-squeeze">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend>Add A New Accelerator</legend>
+                    <legend>Add A New Company</legend>
                     {{ form|crispy }}
                 </fieldset>
                 <div class="wrapper">
