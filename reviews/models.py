@@ -39,7 +39,7 @@ class Accelerator(models.Model):
     def avg_mentorship(self):
         quantity = Review.objects.filter(subject=self)
         if len(quantity) > 0:
-            float(mentorship_result) = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg('mentorship'))['avg_mentorship']
+            mentorship_result = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg('mentorship'))['avg_mentorship']
         else:
             mentorship_result = 0
         #mentorship_float = float(mentorship_result)
@@ -99,6 +99,11 @@ class Review(models.Model):
     community = models.CharField(choices=RATINGS, blank=False, max_length=1, default='1')
     fundraising = models.CharField(choices=RATINGS, blank=False, max_length=1, default='1')
     corporate_dev = models.CharField(choices=RATINGS, blank=False, max_length=1, default='1')
+    #mentorship_dec = models.DecimalField(decimal_places=2, max_digits=3)
+    #hiring_dec = models.DecimalField(decimal_places=2, max_digits=3)
+    #community_dec = models.DecimalField(decimal_places=2, max_digits=3)
+    #fundraising_dec = models.DecimalField(decimal_places=2, max_digits=3)
+    #corporate_dev_dec = models.DecimalField(decimal_places=2, max_digits=3)
     overall = models.DecimalField(decimal_places=2, max_digits=3)
 
     def __str__(self):
@@ -108,7 +113,13 @@ class Review(models.Model):
         return reverse('review_detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
-        # set the overall field when the model is saved
+        # Convert charfield values to floats for avg function
+        self.mentorship = float(self.mentorship)
+        self.hiring = float(self.hiring)
+        self.community = float(self.community)
+        self.fundraising = float(self.fundraising)
+        self.corporate_dev = float(self.corporate_dev)
+        # Set the overall field when the model is saved
         self.overall = (int(self.mentorship) + int(self.hiring) + int(self.community) + \
             int(self.fundraising) + int(self.corporate_dev)) / 5
         super(Review, self).save(*args, **kwargs)
