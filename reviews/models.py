@@ -83,11 +83,11 @@ class Accelerator(models.Model):
 
 class Review(models.Model):
     RATINGS = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
     )
     subject = models.ForeignKey(Accelerator, on_delete=models.CASCADE, blank=False)
     title = models.CharField(max_length=200, blank=False)
@@ -113,12 +113,6 @@ class Review(models.Model):
         return reverse('review_detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
-        # Convert charfield values to floats for avg function
-        self.mentorship = float(self.mentorship)
-        self.hiring = float(self.hiring)
-        self.community = float(self.community)
-        self.fundraising = float(self.fundraising)
-        self.corporate_dev = float(self.corporate_dev)
         # Set the overall field when the model is saved
         self.overall = (int(self.mentorship) + int(self.hiring) + int(self.community) + \
             int(self.fundraising) + int(self.corporate_dev)) / 5
