@@ -39,11 +39,11 @@ class Accelerator(models.Model):
     def avg_mentorship(self):
         quantity = Review.objects.filter(subject=self)
         if len(quantity) > 0:
-            mentorship_result = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg('mentorship'))['avg_mentorship']
+            mentorship_result = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg(float('mentorship')))['avg_mentorship']
         else:
             mentorship_result = 0
-        mentorship_float = float(mentorship_result)
-        return mentorship_float
+        #mentorship_float = float(mentorship_result)
+        return mentorship_result
     
     @property
     def avg_hiring(self):
