@@ -33,37 +33,37 @@ class Accelerator(models.Model):
     def avg_rating(self):
         quantity = Review.objects.filter(subject=self)
         overall_result = Review.objects.filter(subject=self).aggregate(avg_rating=Avg('overall'))['avg_rating']
-        return overall_result if len(quantity) > 0 else 0
+        return overall_result if len(quantity) > 0 else float(0)
     
     @property
     def avg_mentorship(self):
         quantity = Review.objects.filter(subject=self)
         mentorship_result = Review.objects.filter(subject=self).aggregate(avg_mentorship=Avg('mentorship'))['avg_mentorship']
-        return mentorship_result if len(quantity) > 0 else 0
+        return mentorship_result if len(quantity) > 0 else float(0)
     
     @property
     def avg_hiring(self):
         quantity = Review.objects.filter(subject=self)
         hiring_result = Review.objects.filter(subject=self).aggregate(avg_hiring=Avg('hiring'))['avg_hiring']
-        return hiring_result if len(quantity) > 0 else 0
+        return hiring_result if len(quantity) > 0 else float(0)
     
     @property
     def avg_community(self):
         quantity = Review.objects.filter(subject=self)
         community_result = Review.objects.filter(subject=self).aggregate(avg_community=Avg('community'))['avg_community']
-        return community_result if len(quantity) > 0 else 0
+        return community_result if len(quantity) > 0 else float(0)
     
     @property
     def avg_fundraising(self):
         quantity = Review.objects.filter(subject=self)
         fundraising_result = Review.objects.filter(subject=self).aggregate(avg_fundraising=Avg('fundraising'))['avg_fundraising']
-        return fundraising_result if len(quantity) > 0 else 0
+        return fundraising_result if len(quantity) > 0 else float(0)
     
     @property
     def avg_corporate(self):
         quantity = Review.objects.filter(subject=self)
         corporate_result = Review.objects.filter(subject=self).aggregate(avg_corporate=Avg('corporate_dev'))['avg_corporate']
-        return corporate_result if len(quantity) > 0 else 0
+        return corporate_result if len(quantity) > 0 else float(0)
 
 class Review(models.Model):
     RATINGS = (
@@ -78,11 +78,11 @@ class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     feedback = models.TextField(blank=False)
     date_posted = models.DateTimeField(default=timezone.now)
-    mentorship = models.IntegerField(choices=RATINGS, blank=False, max_length=1, default='1')
-    hiring = models.IntegerField(choices=RATINGS, blank=False, max_length=1, default='1')
-    community = models.IntegerField(choices=RATINGS, blank=False, max_length=1, default='1')
-    fundraising = models.IntegerField(choices=RATINGS, blank=False, max_length=1, default='1')
-    corporate_dev = models.IntegerField(choices=RATINGS, blank=False, max_length=1, default='1')
+    mentorship = models.IntegerField(choices=RATINGS, blank=False, max_length=1)
+    hiring = models.IntegerField(choices=RATINGS, blank=False, max_length=1)
+    community = models.IntegerField(choices=RATINGS, blank=False, max_length=1)
+    fundraising = models.IntegerField(choices=RATINGS, blank=False, max_length=1)
+    corporate_dev = models.IntegerField(choices=RATINGS, blank=False, max_length=1)
     overall = models.DecimalField(decimal_places=2, max_digits=3)
 
     def __str__(self):
