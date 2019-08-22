@@ -92,7 +92,6 @@ class Review(models.Model):
         return reverse('review_detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
-        # Set the overall field when the model is saved
         self.overall = (int(self.mentorship) + int(self.hiring) + int(self.community) + \
             int(self.fundraising) + int(self.corporate_dev)) / 5
         super(Review, self).save(*args, **kwargs)
