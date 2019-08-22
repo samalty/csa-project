@@ -19,7 +19,6 @@ def accelerator_detail(request, pk):
         'accelerator': accelerator,
         'reviews': reviews,
     }
-    print(accelerator.avg_mentorship)
     return render(request, 'accelerators/accelerator_detail.html', context)
 
 def accelerator_reviews(request, pk):

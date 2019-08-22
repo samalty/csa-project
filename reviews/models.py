@@ -108,6 +108,7 @@ class Review(models.Model):
         return reverse('review_detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
+        # Convert string values to int's for avg function
         self.mentorship = int(self.mentorship)
         self.hiring = int(self.hiring)
         self.community = int(self.community)
