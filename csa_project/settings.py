@@ -146,9 +146,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-#AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
 
-AWS_S3_REGION_NAME = 'eu-west-2'
+#AWS_S3_REGION_NAME = 'eu-west-2'
 
 AWS_STORAGE_BUCKET_NAME = 'acceler8-company-logos'
 AWS_BUCKET_NAME = 'acceler8-company-logos'
