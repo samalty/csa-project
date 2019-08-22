@@ -83,11 +83,11 @@ class Accelerator(models.Model):
 
 class Review(models.Model):
     RATINGS = (
-        (1, '1'),
-        (2, '2'),
-        (3, '3'),
-        (4, '4'),
-        (5, '5'),
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
     )
     subject = models.ForeignKey(Accelerator, on_delete=models.CASCADE, blank=False)
     title = models.CharField(max_length=200, blank=False)
