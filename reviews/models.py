@@ -78,11 +78,11 @@ class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     feedback = models.TextField(blank=False)
     date_posted = models.DateTimeField(default=timezone.now)
-    mentorship = models.IntegerField(choices=RATINGS, blank=False)
-    hiring = models.IntegerField(choices=RATINGS, blank=False)
-    community = models.IntegerField(choices=RATINGS, blank=False)
-    fundraising = models.IntegerField(choices=RATINGS, blank=False)
-    corporate_dev = models.IntegerField(choices=RATINGS, blank=False)
+    mentorship = models.IntegerField(choices=RATINGS, blank=False, default=1)
+    hiring = models.IntegerField(choices=RATINGS, blank=False, default=1)
+    community = models.IntegerField(choices=RATINGS, blank=False, default=1)
+    fundraising = models.IntegerField(choices=RATINGS, blank=False, default=1)
+    corporate_dev = models.IntegerField(choices=RATINGS, blank=False, default=1)
     overall = models.DecimalField(decimal_places=2, max_digits=3)
 
     def __str__(self):
