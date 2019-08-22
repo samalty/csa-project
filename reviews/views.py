@@ -17,7 +17,6 @@ class ReviewListView(ListView):
 class ReviewDetailView(DetailView):
     model = Review
     template_name = 'reviews/review_detail.html'
-    print(review.mentorship)
 
 @login_required
 def review_create(request, pk=None):
