@@ -99,11 +99,6 @@ class Review(models.Model):
     community = models.CharField(choices=RATINGS, blank=False, max_length=1, default='1')
     fundraising = models.CharField(choices=RATINGS, blank=False, max_length=1, default='1')
     corporate_dev = models.CharField(choices=RATINGS, blank=False, max_length=1, default='1')
-    #mentorship_dec = models.DecimalField(decimal_places=2, max_digits=3)
-    #hiring_dec = models.DecimalField(decimal_places=2, max_digits=3)
-    #community_dec = models.DecimalField(decimal_places=2, max_digits=3)
-    #fundraising_dec = models.DecimalField(decimal_places=2, max_digits=3)
-    #corporate_dev_dec = models.DecimalField(decimal_places=2, max_digits=3)
     overall = models.DecimalField(decimal_places=2, max_digits=3)
 
     def __str__(self):
@@ -113,6 +108,11 @@ class Review(models.Model):
         return reverse('review_detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
+        self.mentorship = int(self.mentorship)
+        self.hiring = int(self.hiring)
+        self.community = int(self.community)
+        self.fundraising = int(self.fundraising)
+        self.corporate_dev = int(self.corporate_dev)
         # Set the overall field when the model is saved
         self.overall = (int(self.mentorship) + int(self.hiring) + int(self.community) + \
             int(self.fundraising) + int(self.corporate_dev)) / 5
