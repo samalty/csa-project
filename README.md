@@ -36,3 +36,17 @@ customisation of radio buttons in the review form to create a responsive five-st
 - HTML: HTML was used to help structure the website.
 - CSS: The appearance of the website was enhanced using CSS. The stylesheet is available in the static folder.
 - SQL: All data inputted into the website by administrators and users is saved to a Postgresql database.
+
+## Deployment
+
+The final project was pushed to Github, before being deployed to Heroku by way of connecting to the Github workspace. A Heroku Postgres 
+database was included as an add-on when setting up the app in Heroku. Heroku came with its own database URL within config variables, which I 
+was required to replicate within the env.py file, before copying the remaining config variables from the env.py file to Heroku.
+
+Certain settings within the settings.py file were reconfigured so that static and media files would be hosted within and imported into a 
+cloud-based S3 bucket created using Amazon Web Services. 'gunicorn' was installed via the bash terminal to allow the project to connect to 
+Heroku, and 'psycopg2' was installed to enable the project to interact with the SQL database. The requirements.txt file was duly updated. A 
+Procfile was added to convey to Heroku the type of app that it is hosting. Finally, 'acceler8.herokuapp.com' was added to the allowed hosts 
+within the settings.py file and pushed to git, to authorise Heroku as a host, before deploying the master branch.
+
+A live demo version of this application can be found at: https://acceler8.herokuapp.com/
