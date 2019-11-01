@@ -33,7 +33,7 @@ keyrings.alt==3.0
 MarkupSafe==1.0
 netifaces==0.10.4
 oauthlib==2.0.6
-Pillow==6.0.0
+Pillow==6.2.0
 postgres==2.2.2
 psycopg2-binary==2.8.3
 pyasn1==0.4.2
