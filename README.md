@@ -1,6 +1,6 @@
 # Acceler8
 
-![](static/img/acceler8.JPEG)
+![](static/img/acceler8.jpg)
 
 Acceler8 is a review platform for startup accelerators in the UK. By gathering feedback shared by startups, Acceler8 informs 
 the decisions of others and helps ensure that future startups partner up with a company that best suits their needs. In addition 
