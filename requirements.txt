@@ -19,7 +19,7 @@ django-storages==1.7.1
 docutils==0.15.2
 env==0.1.0
 gunicorn==19.9.0
-httplib2==0.9.2
+httplib2==0.19.0
 hyperlink==17.3.1
 idna==2.6
 incremental==16.10.1
